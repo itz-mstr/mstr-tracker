@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mstr Extreme Demon Tracker</title>
+  <link id="pageFavicon" rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect x='2' y='2' width='60' height='60' rx='10' fill='%23ffffff' stroke='%23000000' stroke-width='5'/><rect x='5' y='5' width='54' height='54' rx='7' fill='none' stroke='%23ffffff' stroke-width='2'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia, serif' font-weight='bold' font-size='18' fill='%23000000'>mstr.</text></svg>" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #000000;
+      --bg-panel: #080808;
+      --bg-panel-border: #262626;
+      --accent: #ffffff;
+      --accent-glow: rgba(255, 255, 255, 0.16);
+      --text-main: #ffffff;
+      --text-muted: #9ca3af;
+      --card-radius: 10px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      min-height: 100vh;
+      padding: 24px 16px 60px;
+    }
+
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .header-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .mstr-cube {
+      width: 44px;
+      height: 44px;
+      background: #ffffff;
+      border: 3.5px solid #000000;
+      outline: 2px solid #ffffff;
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #000000;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 0.66rem;
+      font-weight: 700;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.65);
+      user-select: none;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .mstr-cube img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .brand h1 {
+      font-size: 1.55rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.35);
+    }
+
+    .brand span.tag {
+      background: var(--accent-glow);
+      color: var(--accent);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      font-size: 0.76rem;
+      padding: 3px 9px;
+      border-radius: 6px;
+      font-weight: 700;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.25);
+    }
+
+    .stats-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .stat-card {
+      background: var(--bg-panel);
+      border: 1px solid var(--bg-panel-border);
+      padding: 14px 16px;
+      border-radius: 10px;
+      box-shadow: inset 0 0 12px rgba(255, 255, 255, 0.03);
+    }
+
+    .stat-card .label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .stat-card .value {
+      font-size: 1.35rem;
+      font-weight: 800;
+    }
+
+    .neon-text {
+      color: #ffffff;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.75);
+    }
+
+    .tabs-nav {
+      display: flex;
+      justify-content: space-around;
+      border-bottom: 1px solid #222222;
+      margin-bottom: 18px;
+      user-select: none;
+    }
+
+    .tab-btn {
+      flex: 1;
+      text-align: center;
+      background: transparent;
+      border: none;
+      color: #6b7280;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      padding: 14px 12px;
+      cursor: pointer;
+      position: relative;
+      transition: color 0.2s, text-shadow 0.2s;
+      text-transform: uppercase;
+    }
+
+    .tab-btn:hover {
+      color: #d1d5db;
+    }
+
+    .tab-btn.active {
+      color: #ffffff;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.65);
+    }
+
+    .tab-btn.active::after {
+      content: "";
+      position: absolute;
+      bottom: -1px;
+      left: 10%;
+      width: 80%;
+      height: 3px;
+      background: #ffffff;
+      box-shadow: 0 -2px 12px #ffffff, 0 0 8px #ffffff;
+      border-radius: 3px 3px 0 0;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .search-input {
+      flex: 1;
+      min-width: 220px;
+      background: var(--bg-panel);
+      border: 1px solid var(--bg-panel-border);
+      color: #fff;
+      padding: 9px 14px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .search-input:focus {
+      border-color: #ffffff;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    }
+
+    .filter-group {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .chip-btn {
+      background: #080808;
+      border: 1px solid #262626;
+      color: #9ca3af;
+      padding: 7px 12px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .chip-btn:hover {
+      border-color: #52525b;
+      color: #f4f4f5;
+    }
+
+    .chip-btn.active {
+      background: rgba(255, 255, 255, 0.14);
+      color: #ffffff;
+      border-color: #ffffff;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.35);
+    }
+
+    .category-select {
+      background: #080808;
+      border: 1px solid #ffffff;
+      color: #ffffff;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      outline: none;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.25);
+    }
+
+    .category-select option {
+      background: #080808;
+      color: #ffffff;
+    }
+
+    .wanted-cat-header {
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #ffffff;
+      text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+      margin: 14px 0 6px;
+      padding-left: 8px;
+      border-left: 3px solid #ffffff;
+    }
+
+    .demon-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .demon-card {
+      position: relative;
+      min-height: 104px;
+      border-radius: var(--card-radius);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+      background-size: cover;
+      background-position: center 38%;
+      background-repeat: no-repeat;
+      gap: 16px;
+    }
+
+    .demon-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255, 255, 255, 0.75);
+      box-shadow: 0 0 16px rgba(255, 255, 255, 0.25);
+    }
+
+    .demon-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.95) 0%,
+        rgba(8, 8, 8, 0.82) 48%,
+        rgba(12, 12, 12, 0.58) 100%
+      );
+      z-index: 1;
+    }
+
+    .card-left {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .rank-block {
+      min-width: 84px;
+      text-align: left;
+    }
+
+    .rank-number {
+      font-size: 1.55rem;
+      font-weight: 800;
+      color: #ffffff;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.45);
+      line-height: 1.1;
+    }
+
+    .rank-sub {
+      font-size: 0.74rem;
+      color: #d4d4d8;
+      font-weight: 700;
+    }
+
+    .level-info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-width: 0;
+    }
+
+    .level-title-row {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      flex-wrap: wrap;
+    }
+
+    .level-name {
+      font-size: 1.32rem;
+      font-weight: 800;
+      color: #ffffff;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .badge-hardest {
+      background: #ffffff;
+      color: #000000;
+      font-size: 0.68rem;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 4px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      box-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
+    }
+
+    .badge-enjoyment {
+      font-size: 0.73rem;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 4px;
+      color: #ffffff;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+    }
+
+    .level-meta {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #e4e4e7;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .level-notes {
+      font-size: 0.8rem;
+      color: #a1a1aa;
+      font-style: italic;
+      margin-top: 2px;
+    }
+
+    .card-right {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-shrink: 0;
+    }
+
+    .stat-boxes {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      width: 165px;
+    }
+
+    .stat-box {
+      border-radius: 6px;
+      padding: 4px 10px;
+      text-align: center;
+      border: 1.5px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.65);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      line-height: 1.15;
+    }
+
+    @keyframes flashLastClick {
+      0%, 100% {
+        background: #000000;
+        border-color: #7f1d1d;
+        box-shadow: 0 0 6px rgba(153, 27, 27, 0.5);
+      }
+      50% {
+        background: #630606;
+        border-color: #ef4444;
+        box-shadow: 0 0 16px rgba(220, 38, 38, 0.9), inset 0 0 8px rgba(220, 38, 38, 0.45);
+      }
+    }
+
+    .stat-box.last-click-flash {
+      animation: flashLastClick 1.15s infinite ease-in-out !important;
+    }
+
+    .stat-box .box-title {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      color: rgba(255, 255, 255, 0.9);
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+    }
+
+    .stat-box .box-val {
+      font-size: 0.84rem;
+      font-weight: 800;
+      color: #ffffff;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .yt-btn {
+      width: 44px;
+      height: 60px;
+      background: #ffffff;
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+      border: none;
+      cursor: pointer;
+    }
+
+    .yt-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 18px rgba(255, 255, 255, 0.9);
+    }
+
+    .yt-btn svg {
+      width: 20px;
+      height: 20px;
+      fill: #000000;
+    }
+
+    @media (max-width: 720px) {
+      .demon-card {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 14px;
+      }
+      .card-right {
+        justify-content: space-between;
+        width: 100%;
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        padding-top: 10px;
+      }
+      .stat-boxes {
+        flex-direction: row;
+        width: auto;
+        flex: 1;
+      }
+      .stat-box {
+        flex: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header-bar">
+      <div class="brand">
+        <div class="mstr-cube" id="headerCube" title="mstr.">mstr.</div>
+        <h1>MSTR EXTREME DEMONS <span class="tag">GD TRACKER</span></h1>
+      </div>
+    </div>
+
+    <div class="stats-strip" id="statsStrip"></div>
+
+    <div class="tabs-nav">
+      <button class="tab-btn active" id="tab-completed" onclick="switchTab('completed')">
+        COMPLETED (<span id="count-completed">0</span>)
+      </button>
+      <button class="tab-btn" id="tab-hardest" onclick="switchTab('hardest')">
+        HARDEST RANKING (<span id="count-hardest">0</span>)
+      </button>
+      <button class="tab-btn" id="tab-wanted" onclick="switchTab('wanted')">
+        WANTED (<span id="count-wanted">0</span>)
+      </button>
+    </div>
+
+    <div class="toolbar">
+      <input
+        type="text"
+        id="searchInput"
+        class="search-input"
+        placeholder="Rechercher un Extreme Demon, une note, une date..."
+        oninput="renderList()"
+      />
+      <div class="filter-group" id="subFilters"></div>
+    </div>
+
+    <div class="demon-list" id="demonList"></div>
+  </div>
+
+  <!-- Chargement du fichier de données externe -->
+  <script src="data.js"></script>
+
+  <script>
+    const BANNER_PALETTES = [
+      "linear-gradient(125deg, #000000 0%, #18181b 55%, #3f3f46 100%)",
+      "linear-gradient(125deg, #000000 0%, #111827 55%, #374151 100%)",
+      "linear-gradient(125deg, #050505 0%, #1f1f23 50%, #52525b 100%)",
+      "linear-gradient(125deg, #000000 0%, #262626 55%, #404040 100%)",
+      "linear-gradient(125deg, #030303 0%, #171717 50%, #4b5563 100%)"
+    ];
+
+    const DEFAULT_SVG_FAVICON = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect x='2' y='2' width='60' height='60' rx='10' fill='%23ffffff' stroke='%23000000' stroke-width='5'/><rect x='5' y='5' width='54' height='54' rx='7' fill='none' stroke='%23ffffff' stroke-width='2'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia, serif' font-weight='bold' font-size='18' fill='%23000000'>mstr.</text></svg>";
+
+    let currentTab = "completed";
+    let completedSort = "recent";
+    let hardestFilterOnly = false;
+    let wantedCategory = "all";
+
+    function applyCubeIcon() {
+      const cubeEl = document.getElementById("headerCube");
+      const favEl = document.getElementById("pageFavicon");
+      if (APP_CONFIG.cubeIcon && APP_CONFIG.cubeIcon.trim() !== "") {
+        cubeEl.innerHTML = `<img src="${APP_CONFIG.cubeIcon}" alt="cube" />`;
+        favEl.href = APP_CONFIG.cubeIcon;
+      } else {
+        cubeEl.textContent = "mstr.";
+        favEl.href = DEFAULT_SVG_FAVICON;
+      }
+    }
+
+    function computePoints(top) {
+      if (!top || top > 2000) return "0.0";
+      const pts = 500 * Math.exp(-0.0052 * top);
+      return Math.max(1.5, pts).toFixed(1);
+    }
+
+    function extractYouTubeId(url) {
+      if (!url) return null;
+      const regExp = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/i;
+      const match = url.match(regExp);
+      return match ? match[1] : null;
+    }
+
+    function getBannerStyle(item) {
+      if (item.banner && item.banner.trim() !== "") {
+        return `background-image: url('${item.banner}')`;
+      }
+      const videoId = extractYouTubeId(item.yt);
+      if (videoId) {
+        return `background-image: url('https://img.youtube.com/vi/${videoId}/maxresdefault.jpg'), url('https://img.youtube.com/vi/${videoId}/hqdefault.jpg')`;
+      }
+      const hash = item.level.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0);
+      const gradient = BANNER_PALETTES[hash % BANNER_PALETTES.length];
+      return `background-image: ${gradient}`;
+    }
+
+    function parseAttempts(att) {
+      if (!att) return 0;
+      const str = String(att).replace(/,/g, "").trim();
+      if (str.includes("-")) {
+        const parts = str.split("-").map(Number);
+        return Math.round((parts[0] + parts[1]) / 2);
+      }
+      return parseInt(str, 10) || 0;
+    }
+
+    function formatWorstFail(wf) {
+      if (!wf) return "-";
+      let str = String(wf).trim();
+      if (str.includes("*")) {
+        str = str.replace(/\*/g, "").trim();
+        if (!str.toLowerCase().includes("last click")) {
+          str += " (last click)";
+        }
+      }
+      return str;
+    }
+
+    function isLastClickFail(wf) {
+      if (!wf) return false;
+      const str = String(wf).toLowerCase();
+      return str.includes("*") || str.includes("last click");
+    }
+
+    function parseWorstFail(wf) {
+      if (!wf) return 0;
+      const match = String(wf).match(/(\d+(?:\.\d+)?)/);
+      return match ? parseFloat(match[1]) : 0;
+    }
+
+    function getThresholdColor(value, greenVal, redVal) {
+      let ratio = 0;
+      if (redVal !== greenVal) {
+        ratio = (value - greenVal) / (redVal - greenVal);
+      }
+      ratio = Math.max(0, Math.min(1, ratio));
+      const hue = Math.round((1 - ratio) * 135);
+      return `background: linear-gradient(135deg, hsla(${hue}, 80%, 32%, 0.92), hsla(${hue}, 85%, 22%, 0.95)); border-color: hsla(${hue}, 85%, 52%, 0.65);`;
+    }
+
+    function getEnjoymentStyle(enjoyment) {
+      const val = Math.max(0, Math.min(100, Number(enjoyment) || 0));
+      const hue = Math.round((val / 100) * 135);
+      return `background: hsla(${hue}, 82%, 36%, 0.95); border: 1px solid hsla(${hue}, 90%, 55%, 0.8);`;
+    }
+
+    function updateStats() {
+      const comp = APP_DATA.completed;
+      document.getElementById("count-completed").textContent = comp.length;
+      document.getElementById("count-hardest").textContent = comp.length;
+      document.getElementById("count-wanted").textContent = APP_DATA.wanted.length;
+
+      const hardestLevel = [...comp].sort((a, b) => a.top - b.top)[0];
+      const totalAtt = comp.reduce((sum, d) => sum + parseAttempts(d.attempts), 0);
+      const avgEnjoyment = comp.length
+        ? (comp.reduce((sum, d) => sum + (Number(d.enjoyment) || 0), 0) / comp.length).toFixed(1)
+        : 0;
+
+      document.getElementById("statsStrip").innerHTML = `
+        <div class="stat-card">
+          <div class="label">Extremes Complétés</div>
+          <div class="value">${comp.length}</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">Hardest Actuel</div>
+          <div class="value neon-text">${hardestLevel ? hardestLevel.level + " (#" + hardestLevel.top + ")" : "-"}</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">Total Attempts</div>
+          <div class="value">${totalAtt.toLocaleString('fr-FR')}</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">Enjoyment Moyen</div>
+          <div class="value">${avgEnjoyment} / 100</div>
+        </div>
+      `;
+    }
+
+    function switchTab(tab) {
+      currentTab = tab;
+      document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+      document.getElementById(`tab-${tab}`).classList.add("active");
+      renderSubFilters();
+      renderList();
+    }
+
+    function renderSubFilters() {
+      const container = document.getElementById("subFilters");
+      const totalComp = APP_DATA.completed.length;
+      if (currentTab === "completed") {
+        container.innerHTML = `
+          <button class="chip-btn ${completedSort === 'recent' ? 'active' : ''}" onclick="setCompletedSort('recent')">Plus récents (#${totalComp} → #1)</button>
+          <button class="chip-btn ${completedSort === 'chrono' ? 'active' : ''}" onclick="setCompletedSort('chrono')">Chronologique (#1 → #${totalComp})</button>
+          <button class="chip-btn ${completedSort === 'enjoyment' ? 'active' : ''}" onclick="setCompletedSort('enjoyment')">Meilleur Enjoyment</button>
+        `;
+      } else if (currentTab === "hardest") {
+        container.innerHTML = `
+          <button class="chip-btn ${!hardestFilterOnly ? 'active' : ''}" onclick="toggleHardestOnly(false)">Tous classés par difficulté (Top)</button>
+          <button class="chip-btn ${hardestFilterOnly ? 'active' : ''}" onclick="toggleHardestOnly(true)">Uniquement mes New Hardests</button>
+        `;
+      } else if (currentTab === "wanted") {
+        container.innerHTML = `
+          <select class="category-select" onchange="setWantedCategory(this.value)">
+            <option value="all" ${wantedCategory === 'all' ? 'selected' : ''}>📂 Catégorie : Toutes les catégories</option>
+            <option value="1-150" ${wantedCategory === '1-150' ? 'selected' : ''}>🔥 Top 1 à 150</option>
+            <option value="150-400" ${wantedCategory === '150-400' ? 'selected' : ''}>⚡ Top 150 à 400</option>
+            <option value="400-800" ${wantedCategory === '400-800' ? 'selected' : ''}>💎 Top 400 à 800</option>
+            <option value="800-1200" ${wantedCategory === '800-1200' ? 'selected' : ''}>🌊 Top 800 à 1200</option>
+            <option value="1200+" ${wantedCategory === '1200+' ? 'selected' : ''}>🌟 Top 1200+</option>
+          </select>
+        `;
+      }
+    }
+
+    function setCompletedSort(sortType) {
+      completedSort = sortType;
+      renderSubFilters();
+      renderList();
+    }
+
+    function toggleHardestOnly(val) {
+      hardestFilterOnly = val;
+      renderSubFilters();
+      renderList();
+    }
+
+    function setWantedCategory(cat) {
+      wantedCategory = cat;
+      renderList();
+    }
+
+    function getWantedCategoryKey(top) {
+      const t = Number(top) || 9999;
+      if (t >= 1 && t <= 150) return "1-150";
+      if (t > 150 && t <= 400) return "150-400";
+      if (t > 400 && t <= 800) return "400-800";
+      if (t > 800 && t <= 1200) return "800-1200";
+      return "1200+";
+    }
+
+    function renderCardHTML(item, idx) {
+      const points = computePoints(item.top);
+      const ytLink = item.yt && item.yt.trim() !== ""
+        ? item.yt
+        : `https://www.youtube.com/results?search_query=${encodeURIComponent(item.level + " geometry dash extreme demon")}`;
+
+      const mainRank = currentTab === "hardest"
+        ? `#${idx + 1}`
+        : (item.top && item.top < 9999 ? `#${item.top}` : `#-`);
+
+      const subRank = currentTab === "hardest"
+        ? `Top #${item.top}`
+        : (currentTab === "completed" ? `extreme n°${item.order}` : `Wanted`);
+
+      const isHardest = String(item.hardest).toLowerCase() === "oui";
+      const numAtt = parseAttempts(item.attempts);
+      const formattedWf = formatWorstFail(item.worstFail);
+      const lastClick = isLastClickFail(item.worstFail);
+      const numWf = parseWorstFail(formattedWf);
+
+      const attBoxStyle = getThresholdColor(numAtt, APP_CONFIG.attGreen, APP_CONFIG.attRed);
+      const wfBoxStyle = lastClick ? "" : getThresholdColor(numWf, APP_CONFIG.wfGreen, APP_CONFIG.wfRed);
+      const wfFlashClass = lastClick ? "last-click-flash" : "";
+
+      return `
+        <div class="demon-card" style="${getBannerStyle(item)}">
+          <div class="card-left">
+            <div class="rank-block">
+              <div class="rank-number">${mainRank}</div>
+              <div class="rank-sub">${subRank}</div>
+            </div>
+            <div class="level-info">
+              <div class="level-title-row">
+                <span class="level-name">${item.level}</span>
+                ${isHardest ? `<span class="badge-hardest">NEW HARDEST</span>` : ""}
+                ${item.enjoyment !== undefined ? `<span class="badge-enjoyment" style="${getEnjoymentStyle(item.enjoyment)}">★ ${item.enjoyment}/100</span>` : ""}
+              </div>
+              ${currentTab !== "wanted" ? `
+                <div class="level-meta">
+                  <span>+${points} points</span>
+                  <span>|</span>
+                  <span>${item.date || "Date N/A"}</span>
+                </div>
+              ` : `
+                <div class="level-meta">
+                  <span>+${points} points estimés</span>
+                  <span>|</span>
+                  <span>Rang AREDL : ${item.top < 9999 ? "#" + item.top : "Non classé"}</span>
+                </div>
+              `}
+              ${item.notes ? `<div class="level-notes">"${item.notes}"</div>` : ""}
+            </div>
+          </div>
+
+          <div class="card-right">
+            ${currentTab !== "wanted" ? `
+              <div class="stat-boxes">
+                <div class="stat-box" style="${attBoxStyle}">
+                  <span class="box-title">Attempts</span>
+                  <span class="box-val">${item.attempts || "-"}</span>
+                </div>
+                <div class="stat-box ${wfFlashClass}" style="${wfBoxStyle}">
+                  <span class="box-title">Worst fail :</span>
+                  <span class="box-val">${formattedWf}</span>
+                </div>
+              </div>
+            ` : ""}
+            <div class="card-buttons">
+              <a class="yt-btn" href="${ytLink}" target="_blank" rel="noopener" title="Voir la vidéo sur YouTube">
+                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderList() {
+      const query = document.getElementById("searchInput").value.toLowerCase().trim();
+      const listEl = document.getElementById("demonList");
+      let items = [];
+
+      if (currentTab === "completed") {
+        items = [...APP_DATA.completed];
+        if (completedSort === "recent") items.sort((a, b) => b.order - a.order);
+        if (completedSort === "chrono") items.sort((a, b) => a.order - b.order);
+        if (completedSort === "enjoyment") items.sort((a, b) => (b.enjoyment || 0) - (a.enjoyment || 0));
+      } else if (currentTab === "hardest") {
+        items = [...APP_DATA.completed];
+        if (hardestFilterOnly) {
+          items = items.filter(d => String(d.hardest).toLowerCase() === "oui");
+        }
+        items.sort((a, b) => (a.top || 9999) - (b.top || 9999));
+      } else if (currentTab === "wanted") {
+        items = [...APP_DATA.wanted].sort((a, b) => (a.top || 9999) - (b.top || 9999));
+        if (wantedCategory !== "all") {
+          items = items.filter(d => getWantedCategoryKey(d.top) === wantedCategory);
+        }
+      }
+
+      if (query) {
+        items = items.filter(d =>
+          d.level.toLowerCase().includes(query) ||
+          (d.notes && d.notes.toLowerCase().includes(query)) ||
+          (d.date && d.date.toLowerCase().includes(query)) ||
+          String(d.top).includes(query)
+        );
+      }
+
+      if (items.length === 0) {
+        listEl.innerHTML = `<div style="text-align:center; padding: 40px; color: var(--text-muted);">Aucun Extreme Demon trouvé.</div>`;
+        return;
+      }
+
+      if (currentTab === "wanted" && wantedCategory === "all") {
+        const categories = [
+          { key: "1-150", label: "Top 1 à 150" },
+          { key: "150-400", label: "Top 150 à 400" },
+          { key: "400-800", label: "Top 400 à 800" },
+          { key: "800-1200", label: "Top 800 à 1200" },
+          { key: "1200+", label: "Top 1200+" }
+        ];
+        let html = "";
+        categories.forEach(cat => {
+          const group = items.filter(d => getWantedCategoryKey(d.top) === cat.key);
+          if (group.length > 0) {
+            html += `<div class="wanted-cat-header">${cat.label} (${group.length})</div>`;
+            html += group.map((item, idx) => renderCardHTML(item, idx)).join("");
+          }
+        });
+        listEl.innerHTML = html;
+        return;
+      }
+
+      listEl.innerHTML = items.map((item, idx) => renderCardHTML(item, idx)).join("");
+    }
+
+    applyCubeIcon();
+    updateStats();
+    renderSubFilters();
+    renderList();
+  </script>
+</body>
+</html>
