@@ -49,37 +49,40 @@
 
     .intro-cube-wrapper {
       animation: loaderGlow 1.6s infinite ease-in-out;
-      border-radius: 12px;
+      border-radius: 7px;
       opacity: 1 !important;
     }
 
     @keyframes loaderGlow {
       0%, 100% {
-        filter: drop-shadow(0 0 18px rgba(255, 255, 255, 0.55));
+        filter: drop-shadow(0 0 16px rgba(255, 255, 255, 0.5));
       }
       50% {
-        filter: drop-shadow(0 0 38px rgba(255, 255, 255, 0.95));
+        filter: drop-shadow(0 0 34px rgba(255, 255, 255, 0.95));
       }
     }
 
+    /* Le cube animé a STRICTEMENT les mêmes bordures et dimensions natives que le cube final */
     #animatedCube {
-      width: 82px;
-      height: 82px;
+      width: 44px;
+      height: 44px;
       background: #ffffff;
-      border: 5px solid #000000;
-      outline: 3px solid #ffffff;
-      border-radius: 12px;
+      border: 3.5px solid #000000;
+      outline: 2px solid #ffffff;
+      border-radius: 7px;
       display: flex;
       align-items: center;
       justify-content: center;
       color: #000000;
       font-family: Georgia, 'Times New Roman', serif;
-      font-size: 1.2rem;
-      font-weight: 800;
-      letter-spacing: -0.3px;
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: -0.2px;
       user-select: none;
       overflow: hidden;
       transform-origin: center center;
+      transform: scale(1.8636); /* Agrandissement initial parfait à 82px */
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.65);
       will-change: transform;
       opacity: 1 !important;
     }
@@ -91,7 +94,7 @@
     }
 
     .loader-info {
-      margin-top: 32px;
+      margin-top: 48px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -166,7 +169,6 @@
       gap: 14px;
     }
 
-    /* Le cube d'en-tête n'a aucune transition d'opacité pour prendre le relais à 100% instantanément */
     .mstr-cube {
       width: 44px;
       height: 44px;
@@ -254,7 +256,6 @@
       box-shadow: 0 0 8px #eab308;
     }
 
-    /* Boutons Admin dans l'en-tête */
     .admin-controls {
       display: none;
       align-items: center;
@@ -348,7 +349,7 @@
       fill: #ffffff;
     }
 
-    /* Statistiques rapides (3 cartes : Completed, Current Hardest, Currently Doing) */
+    /* Statistiques rapides */
     .stats-strip {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -431,7 +432,7 @@
       border-radius: 3px 3px 0 0;
     }
 
-    /* Navigation interne de l'onglet OTHER (2 Carrés redimensionnés) */
+    /* Navigation interne de l'onglet OTHER */
     .other-hub-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 340px));
@@ -872,7 +873,6 @@
       box-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
     }
 
-    /* Badge Dream Hardest en rouge lumineux */
     .badge-dream {
       background: #dc2626;
       color: #ffffff;
@@ -913,7 +913,6 @@
       margin-top: 2px;
     }
 
-    /* Badges de statut Wanted -> Progress */
     .badge-no-progress {
       display: inline-flex;
       align-items: center;
@@ -997,7 +996,6 @@
       gap: 8px;
     }
 
-    /* Menu déroulant pour les cartes Progress */
     .progress-drawer {
       display: none;
       background: #070707;
@@ -1104,7 +1102,6 @@
       fill: #000000;
     }
 
-    /* Boutons d'édition sur les cartes (visibles uniquement en mode Admin) */
     .action-stack {
       display: none;
       flex-direction: column;
@@ -1155,7 +1152,7 @@
       box-shadow: 0 0 10px rgba(239, 68, 68, 0.6);
     }
 
-    /* Fenêtres Modales (Admin) */
+    /* Modales */
     .modal-backdrop {
       position: fixed;
       inset: 0;
@@ -1321,7 +1318,7 @@
 </head>
 <body>
 
-  <!-- Écran de chargement avec le Cube animé (opacité constante à 1) -->
+  <!-- Écran de chargement avec Cube (opacité 1 continue) -->
   <div id="introLoader">
     <div class="intro-cube-wrapper" id="cubeGlowWrapper">
       <div id="animatedCube" title="mstr.">mstr.</div>
@@ -1351,7 +1348,6 @@
           <span id="aredlStatusText">CONNECTING...</span>
         </div>
 
-        <!-- Contrôles exclusifs au Mode Admin (admin=1) -->
         <div class="admin-controls">
           <button class="btn btn-settings" onclick="openSettingsModal()" title="Tracker Settings">
             <svg viewBox="0 0 24 24">
@@ -1368,7 +1364,7 @@
       </div>
     </div>
 
-    <!-- Statistiques en haut (Completed, Current Hardest, Currently Doing) -->
+    <!-- Statistiques en haut (3 cases : Completed, Current Hardest, Currently Doing) -->
     <div class="stats-strip fade-section" id="statsStrip"></div>
 
     <!-- Onglets principaux -->
@@ -1384,10 +1380,10 @@
       </button>
     </div>
 
-    <!-- Zone dynamique pour l'onglet OTHER -->
+    <!-- Zone dynamique OTHER -->
     <div id="otherSectionContainer" class="fade-section"></div>
 
-    <!-- Barre de recherche et filtres secondaires -->
+    <!-- Barre de recherche et filtres -->
     <div class="toolbar fade-section" id="mainToolbar">
       <input
         type="text"
@@ -1403,7 +1399,7 @@
     <div class="demon-list fade-section" id="demonList"></div>
   </div>
 
-  <!-- Fenêtre Modale Admin : Ajouter / Modifier un Extreme -->
+  <!-- Modale Admin : Ajouter / Modifier un Extreme -->
   <div class="modal-backdrop" id="modalBackdrop">
     <div class="modal">
       <div class="modal-header">
@@ -1421,7 +1417,7 @@
             </select>
           </div>
           <div class="form-group">
-            <label>Level Name * (Tip: add * at the end for Dream Hardest)</label>
+            <label>Level Name * (Tip: end with * for Dream Hardest)</label>
             <input type="text" id="f_level" required placeholder="Ex: Limbo* or Trueffet" />
           </div>
           <div class="form-group">
@@ -1429,11 +1425,10 @@
             <input type="number" id="f_top" required placeholder="Ex: 160" />
           </div>
           <div class="form-group">
-            <label>Publisher (Auto-filled via AREDL if empty)</label>
+            <label>Publisher / Creator</label>
             <input type="text" id="f_publisher" placeholder="Ex: MindCap" />
           </div>
 
-          <!-- Champs Completed -->
           <div class="form-group" id="g_order">
             <label>Extreme Order (#)</label>
             <input type="number" id="f_order" placeholder="Ex: 22" />
@@ -1462,7 +1457,6 @@
             </select>
           </div>
 
-          <!-- Champs exclusifs à Progress -->
           <div class="form-group" id="g_bestFromZero" style="display:none;">
             <label>Best from 0% (ex: 64%)</label>
             <input type="text" id="f_bestFromZero" placeholder="Ex: 64%" />
@@ -1497,7 +1491,7 @@
     </div>
   </div>
 
-  <!-- Fenêtre Modale Admin : Réglages -->
+  <!-- Modale Admin : Réglages -->
   <div class="modal-backdrop" id="settingsBackdrop">
     <div class="modal">
       <div class="modal-header">
@@ -1573,14 +1567,14 @@
         { order: 21, level: "Bang Gang", publisher: "DanZmeN", date: "27/08/2026", enjoyment: 90, worstFail: "66%", attempts: "2840", hardest: "Non", top: 1562, notes: "beat 2 player" }
       ],
       wanted: [
-        { order: 1, level: "Omicron", top: 433, notes: "" },
-        { order: 2, level: "Xronier", top: 434, notes: "" },
-        { order: 3, level: "Falling up", top: 1242, notes: "" },
-        { order: 4, level: "Dark odyssey", top: 1288, notes: "" },
-        { order: 5, level: "Gangnam Style", top: 1338, notes: "" },
-        { order: 6, level: "Acu", top: 1406, notes: "" },
-        { order: 7, level: "Red World", top: 1410, notes: "" },
-        { order: 8, level: "CICADA3302", top: 1250, notes: "" }
+        { order: 1, level: "Omicron", publisher: "Team Idols", top: 433, notes: "" },
+        { order: 2, level: "Xronier", publisher: "GrenadeOfTacos", top: 434, notes: "" },
+        { order: 3, level: "Falling up", publisher: "KrmaL", top: 1242, notes: "" },
+        { order: 4, level: "Dark odyssey", publisher: "JonathanGD", top: 1288, notes: "" },
+        { order: 5, level: "Gangnam Style", publisher: "Alex-Pain24", top: 1338, notes: "" },
+        { order: 6, level: "Acu", publisher: "Neigefeu", top: 1406, notes: "" },
+        { order: 7, level: "Red World", publisher: "Neptune", top: 1410, notes: "" },
+        { order: 8, level: "CICADA3302", publisher: "Cirtrax", top: 1250, notes: "" }
       ],
       progress: []
     };
@@ -1606,26 +1600,24 @@
     const DEFAULT_SVG_FAVICON = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect x='2' y='2' width='60' height='60' rx='10' fill='%23ffffff' stroke='%23000000' stroke-width='5'/><rect x='5' y='5' width='54' height='54' rx='7' fill='none' stroke='%23ffffff' stroke-width='2'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia, serif' font-weight='bold' font-size='18' fill='%23000000'>mstr.</text></svg>";
 
     let currentTab = "completed";
-    let otherSubView = "menu"; // 'menu' | 'wanted' | 'progress'
+    let otherSubView = "menu";
     let expandedProgressLevel = null;
     let completedSort = "recent";
-    let progressSort = "recent"; // 'recent' | 'top'
+    let progressSort = "recent";
     let hardestFilterOnly = false;
     let wantedCategory = "all";
     let wheelCategoryFilter = "all";
     let animationTriggered = false;
 
-    // État Admin & Roue de la fortune
     let isAdmin = false;
     let hasUnsavedChanges = false;
     let editingState = null;
     let keyBuffer = "";
-    let wheelMode = "selection"; // 'selection' | 'elimination'
+    let wheelMode = "selection";
     let wheelSelectedLevels = new Set();
     let wheelRotation = 0;
     let isSpinning = false;
 
-    // Utilitaires pour gérer l'étoile * (Dream Hardest)
     function cleanLevelName(name) {
       return String(name || "").replace(/\*+$/, "").trim();
     }
@@ -1642,7 +1634,6 @@
       setTimeout(() => t.classList.remove("show"), 3500);
     }
 
-    // Détection clavier secrète "admin=1"
     window.addEventListener("keydown", (e) => {
       const tag = (e.target && e.target.tagName) ? e.target.tagName.toLowerCase() : "";
       if (tag === "input" || tag === "textarea" || tag === "select") return;
@@ -1668,7 +1659,6 @@
       if (btn) btn.classList.add("visible");
     }
 
-    // Téléchargement du fichier data.js mis à jour
     function downloadUpdatedDataJS() {
       const content = `// Visual & threshold settings\nconst APP_CONFIG = ${JSON.stringify(CONFIG, null, 2)};\n\n// Extreme Demons Data\nconst APP_DATA = ${JSON.stringify(DATA, null, 2)};\n`;
       const blob = new Blob([content], { type: "application/javascript;charset=utf-8" });
@@ -1683,7 +1673,6 @@
       showToast("📥 data.js downloaded! Upload it to your GitHub repository.");
     }
 
-    // Timeout de sécurité garanti à 3 secondes
     const hardFallbackTimer = setTimeout(() => {
       if (!animationTriggered) {
         setAredlBadgeStatus(false);
@@ -1723,7 +1712,6 @@
       }
     }
 
-    // Récupère à la fois la position (Top) et le Publisher depuis l'API v2 de l'AREDL
     async function fetchAredlData(timeoutMs = 2200) {
       const controller = new AbortController();
       const timer = setTimeout(() => controller.abort(), timeoutMs);
@@ -1745,11 +1733,9 @@
             if (!levelMap.has(cleanKey)) {
               let pubName = "";
               if (lvl.publisher) {
-                if (typeof lvl.publisher === "string") {
-                  pubName = lvl.publisher;
-                } else {
-                  pubName = lvl.publisher.global_name || lvl.publisher.username || lvl.publisher.name || "";
-                }
+                pubName = typeof lvl.publisher === "string" ? lvl.publisher : (lvl.publisher.global_name || lvl.publisher.username || "");
+              } else if (lvl.creator) {
+                pubName = typeof lvl.creator === "string" ? lvl.creator : (lvl.creator.name || "");
               }
               levelMap.set(cleanKey, {
                 position: lvl.position,
@@ -1770,7 +1756,8 @@
                   item.top = info.position;
                   updatedCount++;
                 }
-                if (info.publisher) {
+                // Si l'API renseigne un publisher et qu'on ne l'a pas, on le met à jour
+                if (info.publisher && !item.publisher) {
                   item.publisher = info.publisher;
                 }
               }
@@ -1855,7 +1842,6 @@
       return `background: hsla(${hue}, 82%, 36%, 0.95); border: 1px solid hsla(${hue}, 90%, 55%, 0.8);`;
     }
 
-    // Trie les niveaux de Progress du plus récent au plus ancien
     function getSortedProgressByRecent() {
       const prog = DATA.progress || [];
       return prog.map((item, idx) => ({ item, idx }))
@@ -1994,7 +1980,6 @@
         </div>
       `;
 
-      // Roue de la fortune (uniquement en mode Admin et dans Wanted)
       if (isAdmin && otherSubView === "wanted") {
         const filteredWantedForWheel = wheelCategoryFilter === "all"
           ? DATA.wanted
@@ -2059,7 +2044,6 @@
       }
     }
 
-    // Fonctions de la Roue de la fortune
     function setWheelMode(mode) {
       wheelMode = mode;
       renderOtherSection();
@@ -2293,7 +2277,6 @@
       const dreamBadge = (isWantedView || isProgressView) && isDreamHardest(rawName);
       const safeRawName = rawName.replace(/'/g, "\\'");
 
-      // Recherche YouTube sous la forme "(nom du level) gd"
       const ytLink = item.yt && item.yt.trim() !== ""
         ? item.yt
         : `https://www.youtube.com/results?search_query=${encodeURIComponent(displayLevelName + " gd")}`;
@@ -2523,7 +2506,6 @@
       listEl.innerHTML = items.map((item, idx) => renderCardHTML(item, idx)).join("");
     }
 
-    // Fonctions Modales Admin (Add / Edit / Delete / Settings)
     function toggleFormFields() {
       const cat = document.getElementById("f_category").value;
       const compFields = ["g_order", "g_date", "g_enjoyment", "g_worstFail", "g_hardest"];
@@ -2635,7 +2617,7 @@
           bestFromZero: document.getElementById("f_bestFromZero").value.trim(),
           bestRun: document.getElementById("f_bestRun").value.trim(),
           runsCount: document.getElementById("f_runsCount").value.trim(),
-          updatedAt: Date.now(), // Enregistre la date de modification/ajout pour le tri "Most Recent" et "Currently Doing"
+          updatedAt: Date.now(),
           notes,
           yt,
           banner
@@ -2654,7 +2636,6 @@
         if (targetCat === "wanted") wheelSelectedLevels.add(level);
       }
 
-      // Synchronise le publisher avec l'API si non renseigné
       fetchAredlData(1800).then(() => {
         updateStats();
         renderList();
@@ -2721,7 +2702,7 @@
       }
     }
 
-    // Animation d'introduction : le cube conserve une opacité de 1 en permanence
+    // Animation fluide : transition d'échelle 1.8636 -> 1 sans altérer l'opacité
     function triggerIntroAnimation() {
       if (animationTriggered) return;
       animationTriggered = true;
@@ -2747,31 +2728,31 @@
 
       const deltaX = (endRect.left + endRect.width / 2) - (startRect.left + startRect.width / 2);
       const deltaY = (endRect.top + endRect.height / 2) - (startRect.top + startRect.height / 2);
-      const scale = endRect.width / (startRect.width || 82);
 
       if (typeof animatedCube.animate === "function") {
         const flyAnim = animatedCube.animate([
-          { transform: "translate(0px, 0px) scale(1)", opacity: 1 },
-          { transform: `translate(${deltaX}px, ${deltaY}px) scale(${scale})`, opacity: 1 }
+          { transform: "translate(0px, 0px) scale(1.8636)" },
+          { transform: `translate(${deltaX}px, ${deltaY}px) scale(1)` }
         ], {
           duration: 820,
-          easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+          easing: "cubic-bezier(0.2, 1, 0.35, 1)",
           fill: "forwards"
         });
 
         flyAnim.onfinish = () => {
-          // Relais instantané sans fondu sur le cube : son opacité reste à 100% tout le temps
+          // Relais sans fondu sur le cube : l'opacité reste continue à 1
           headerCube.style.opacity = "1";
-          introLoader.style.backgroundColor = "transparent";
-          introLoader.style.pointerEvents = "none";
           animatedCube.style.visibility = "hidden";
 
-          // Le reste du tracker apparaît en fondu autour du cube
+          introLoader.style.transition = "background-color 0.5s ease";
+          introLoader.style.backgroundColor = "transparent";
+          introLoader.style.pointerEvents = "none";
+
           container.classList.add("revealed");
 
           setTimeout(() => {
             if (introLoader) introLoader.remove();
-          }, 620);
+          }, 550);
         };
       } else {
         headerCube.style.opacity = "1";
