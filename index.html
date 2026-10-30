@@ -45,6 +45,7 @@
       justify-content: center;
       pointer-events: all;
       overflow: hidden;
+      transition: background-color 0.6s ease;
     }
 
     .intro-cube-container {
@@ -134,7 +135,7 @@
       100% { transform: translateX(100%); }
     }
 
-    /* Conteneur principal (opacité 0 au début) */
+    /* Conteneur principal */
     .container {
       max-width: 980px;
       margin: 0 auto;
@@ -174,7 +175,6 @@
       box-shadow: 0 0 10px rgba(255, 255, 255, 0.25);
     }
 
-    /* Section droite de l'en-tête */
     .header-right {
       display: flex;
       align-items: center;
@@ -201,8 +201,8 @@
       width: 7px;
       height: 7px;
       border-radius: 50%;
-      background: #22c55e;
-      box-shadow: 0 0 8px #22c55e;
+      background: #eab308;
+      box-shadow: 0 0 8px #eab308;
       transition: background 0.3s, box-shadow 0.3s;
     }
 
@@ -225,7 +225,7 @@
       user-select: none;
       flex-shrink: 0;
       overflow: hidden;
-      opacity: 0; /* Rendu visible après l'atterrissage du cube animé */
+      opacity: 0;
     }
 
     .mstr-cube img {
@@ -234,7 +234,7 @@
       object-fit: cover;
     }
 
-    /* Statistiques */
+    /* Statistiques rapides */
     .stats-strip {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
@@ -403,7 +403,7 @@
       border-left: 3px solid #ffffff;
     }
 
-    /* Cartes de démons */
+    /* Cartes */
     .demon-list {
       display: flex;
       flex-direction: column;
@@ -725,6 +725,14 @@
   <script src="data.js"></script>
 
   <script>
+    // Sécurité au cas où data.js met du temps ou est absent
+    if (typeof APP_DATA === 'undefined') {
+      window.APP_DATA = { completed: [], wanted: [] };
+    }
+    if (typeof APP_CONFIG === 'undefined') {
+      window.APP_CONFIG = { attGreen: 1000, attRed: 15000, wfGreen: 50, wfRed: 95, cubeIcon: "" };
+    }
+
     const BANNER_PALETTES = [
       "linear-gradient(125deg, #000000 0%, #18181b 55%, #3f3f46 100%)",
       "linear-gradient(125deg, #000000 0%, #111827 55%, #374151 100%)",
@@ -739,12 +747,13 @@
     let completedSort = "recent";
     let hardestFilterOnly = false;
     let wantedCategory = "all";
+    let animationTriggered = false;
 
     function applyCubeIcon() {
       const headerCube = document.getElementById("headerCube");
       const animatedCube = document.getElementById("animatedCube");
       const favEl = document.getElementById("pageFavicon");
-      if (typeof APP_CONFIG !== 'undefined' && APP_CONFIG.cubeIcon && APP_CONFIG.cubeIcon.trim() !== "") {
+      if (APP_CONFIG.cubeIcon && APP_CONFIG.cubeIcon.trim() !== "") {
         headerCube.innerHTML = `<img src="${APP_CONFIG.cubeIcon}" alt="cube" />`;
         animatedCube.innerHTML = `<img src="${APP_CONFIG.cubeIcon}" alt="cube" />`;
         favEl.href = APP_CONFIG.cubeIcon;
@@ -755,10 +764,18 @@
       }
     }
 
-    // Récupération automatique des données AREDL en direct
-    async function fetchAredlData() {
+    // Récupération AREDL avec AbortController (timeout strict de 2.5s)
+    async function fetchAredlData(timeoutMs = 2500) {
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), timeoutMs);
+
       try {
-        const res = await fetch("https://api.aredl.net/v2/api/aredl/levels", { cache: "no-store" });
+        const res = await fetch("https://api.aredl.net/v2/api/aredl/levels", {
+          signal: controller.signal,
+          headers: { "Accept": "application/json" }
+        });
+        clearTimeout(timer);
+
         if (!res.ok) throw new Error("HTTP status " + res.status);
         const levels = await res.json();
         const rankMap = new Map();
@@ -789,8 +806,8 @@
         });
         return { success: true, count: updatedCount };
       } catch (err) {
-        console.warn("AREDL API offline or unreachable, using local data:", err);
-        return { success: false, error: err };
+        clearTimeout(timer);
+        return { success: false, reason: err.name === 'AbortError' ? 'timeout' : 'network_error' };
       }
     }
 
@@ -809,7 +826,15 @@
 
     function getBannerStyle(item) {
       if (item.banner && item.banner.trim() !== "") {
-        return `background-image: url('${item.banner}')`; } const videoId = extractYouTubeId(item.yt); if (videoId) { return `background-image: url('https://img.youtube.com/vi/${videoId}/maxresdefault.jpg'), url('https://img.youtube.com/vi/${videoId}/hqdefault.jpg')`; } const hash = item.level.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0); const gradient = BANNER_PALETTES[hash \% BANNER_PALETTES.length]; return `background-image: ${gradient}`;
+        return `background-image: url('${item.banner}')`;
+      }
+      const videoId = extractYouTubeId(item.yt);
+      if (videoId) {
+        return `background-image: url('https://img.youtube.com/vi/${videoId}/maxresdefault.jpg'), url('https://img.youtube.com/vi/${videoId}/hqdefault.jpg')`;
+      }
+      const hash = item.level.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0);
+      const gradient = BANNER_PALETTES[hash % BANNER_PALETTES.length];
+      return `background-image: ${gradient}`;
     }
 
     function parseAttempts(att) {
@@ -853,4 +878,354 @@
       }
       ratio = Math.max(0, Math.min(1, ratio));
       const hue = Math.round((1 - ratio) * 135);
-      return `background: linear-gradient(135deg, hsla(${hue}, 80\%, 32\%, 0.92), hsla(${hue}, 85%, 22%,
+      return `background: linear-gradient(135deg, hsla(${hue}, 80%, 32%, 0.92), hsla(${hue}, 85%, 22%, 0.95)); border-color: hsla(${hue}, 85%, 52%, 0.65);`;
+    }
+
+    function getEnjoymentStyle(enjoyment) {
+      const val = Math.max(0, Math.min(100, Number(enjoyment) || 0));
+      const hue = Math.round((val / 100) * 135);
+      return `background: hsla(${hue}, 82%, 36%, 0.95); border: 1px solid hsla(${hue}, 90%, 55%, 0.8);`;
+    }
+
+    function updateStats() {
+      const comp = (APP_DATA && APP_DATA.completed) ? APP_DATA.completed : [];
+      const wanted = (APP_DATA && APP_DATA.wanted) ? APP_DATA.wanted : [];
+
+      document.getElementById("count-completed").textContent = comp.length;
+      document.getElementById("count-hardest").textContent = comp.length;
+      document.getElementById("count-wanted").textContent = wanted.length;
+
+      const hardestLevel = [...comp].sort((a, b) => a.top - b.top)[0];
+      const totalAtt = comp.reduce((sum, d) => sum + parseAttempts(d.attempts), 0);
+      const avgEnjoyment = comp.length
+        ? (comp.reduce((sum, d) => sum + (Number(d.enjoyment) || 0), 0) / comp.length).toFixed(1)
+        : 0;
+
+      document.getElementById("statsStrip").innerHTML = `
+        <div class="stat-card">
+          <div class="label">Completed Extremes</div>
+          <div class="value">${comp.length}</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">Current Hardest</div>
+          <div class="value neon-text">${hardestLevel ? hardestLevel.level + " (#" + hardestLevel.top + ")" : "-"}</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">Total Attempts</div>
+          <div class="value">${totalAtt.toLocaleString('en-US')}</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">Average Enjoyment</div>
+          <div class="value">${avgEnjoyment} / 100</div>
+        </div>
+      `;
+    }
+
+    function switchTab(tab) {
+      currentTab = tab;
+      document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+      document.getElementById(`tab-${tab}`).classList.add("active");
+      renderSubFilters();
+      renderList();
+    }
+
+    function renderSubFilters() {
+      const container = document.getElementById("subFilters");
+      const totalComp = (APP_DATA && APP_DATA.completed) ? APP_DATA.completed.length : 0;
+      if (currentTab === "completed") {
+        container.innerHTML = `
+          <button class="chip-btn ${completedSort === 'recent' ? 'active' : ''}" onclick="setCompletedSort('recent')">Most Recent (#${totalComp} → #1)</button>
+          <button class="chip-btn ${completedSort === 'chrono' ? 'active' : ''}" onclick="setCompletedSort('chrono')">Chronological (#1 → #${totalComp})</button>
+          <button class="chip-btn ${completedSort === 'enjoyment' ? 'active' : ''}" onclick="setCompletedSort('enjoyment')">Highest Enjoyment</button>
+        `;
+      } else if (currentTab === "hardest") {
+        container.innerHTML = `
+          <button class="chip-btn ${!hardestFilterOnly ? 'active' : ''}" onclick="toggleHardestOnly(false)">Ranked by Difficulty (Top)</button>
+          <button class="chip-btn ${hardestFilterOnly ? 'active' : ''}" onclick="toggleHardestOnly(true)">New Hardests Only</button>
+        `;
+      } else if (currentTab === "wanted") {
+        container.innerHTML = `
+          <select class="category-select" onchange="setWantedCategory(this.value)">
+            <option value="all" ${wantedCategory === 'all' ? 'selected' : ''}>📂 Category: All Categories</option>
+            <option value="1-150" ${wantedCategory === '1-150' ? 'selected' : ''}>🔥 Top 1 to 150</option>
+            <option value="150-400" ${wantedCategory === '150-400' ? 'selected' : ''}>⚡ Top 150 to 400</option>
+            <option value="400-800" ${wantedCategory === '400-800' ? 'selected' : ''}>💎 Top 400 to 800</option>
+            <option value="800-1200" ${wantedCategory === '800-1200' ? 'selected' : ''}>🌊 Top 800 to 1200</option>
+            <option value="1200+" ${wantedCategory === '1200+' ? 'selected' : ''}>🌟 Top 1200+</option>
+          </select>
+        `;
+      }
+    }
+
+    function setCompletedSort(sortType) {
+      completedSort = sortType;
+      renderSubFilters();
+      renderList();
+    }
+
+    function toggleHardestOnly(val) {
+      hardestFilterOnly = val;
+      renderSubFilters();
+      renderList();
+    }
+
+    function setWantedCategory(cat) {
+      wantedCategory = cat;
+      renderList();
+    }
+
+    function getWantedCategoryKey(top) {
+      const t = Number(top) || 9999;
+      if (t >= 1 && t <= 150) return "1-150";
+      if (t > 150 && t <= 400) return "150-400";
+      if (t > 400 && t <= 800) return "400-800";
+      if (t > 800 && t <= 1200) return "800-1200";
+      return "1200+";
+    }
+
+    function renderCardHTML(item, idx) {
+      const points = computePoints(item.top);
+      const ytLink = item.yt && item.yt.trim() !== ""
+        ? item.yt
+        : `https://www.youtube.com/results?search_query=${encodeURIComponent(item.level + " geometry dash extreme demon")}`;
+
+      const mainRank = currentTab === "hardest"
+        ? `#${idx + 1}`
+        : (item.top && item.top < 9999 ? `#${item.top}` : `#-`);
+
+      const subRank = currentTab === "hardest"
+        ? `Top #${item.top}`
+        : (currentTab === "completed" ? `Extreme #${item.order}` : `Wanted`);
+
+      const isHardest = String(item.hardest).toLowerCase() === "oui";
+      const numAtt = parseAttempts(item.attempts);
+      const formattedWf = formatWorstFail(item.worstFail);
+      const lastClick = isLastClickFail(item.worstFail);
+      const numWf = parseWorstFail(formattedWf);
+
+      const attBoxStyle = getThresholdColor(numAtt, APP_CONFIG.attGreen, APP_CONFIG.attRed);
+      const wfBoxStyle = lastClick ? "" : getThresholdColor(numWf, APP_CONFIG.wfGreen, APP_CONFIG.wfRed);
+      const wfFlashClass = lastClick ? "last-click-flash" : "";
+
+      return `
+        <div class="demon-card" style="${getBannerStyle(item)}">
+          <div class="card-left">
+            <div class="rank-block">
+              <div class="rank-number">${mainRank}</div>
+              <div class="rank-sub">${subRank}</div>
+            </div>
+            <div class="level-info">
+              <div class="level-title-row">
+                <span class="level-name">${item.level}</span>
+                ${isHardest ? `<span class="badge-hardest">NEW HARDEST</span>` : ""}
+                ${item.enjoyment !== undefined ? `<span class="badge-enjoyment" style="${getEnjoymentStyle(item.enjoyment)}">★ ${item.enjoyment}/100</span>` : ""}
+              </div>
+              ${currentTab !== "wanted" ? `
+                <div class="level-meta">
+                  <span>+${points} points</span>
+                  <span>|</span>
+                  <span>${item.date || "Date N/A"}</span>
+                </div>
+              ` : `
+                <div class="level-meta">
+                  <span>+${points} est. points</span>
+                  <span>|</span>
+                  <span>AREDL Rank: ${item.top < 9999 ? "#" + item.top : "Unranked"}</span>
+                </div>
+              `}
+              ${item.notes ? `<div class="level-notes">"${item.notes}"</div>` : ""}
+            </div>
+          </div>
+
+          <div class="card-right">
+            ${currentTab !== "wanted" ? `
+              <div class="stat-boxes">
+                <div class="stat-box" style="${attBoxStyle}">
+                  <span class="box-title">Attempts</span>
+                  <span class="box-val">${item.attempts || "-"}</span>
+                </div>
+                <div class="stat-box ${wfFlashClass}" style="${wfBoxStyle}">
+                  <span class="box-title">Worst Fail</span>
+                  <span class="box-val">${formattedWf}</span>
+                </div>
+              </div>
+            ` : ""}
+            <div class="card-buttons">
+              <a class="yt-btn" href="${ytLink}" target="_blank" rel="noopener" title="Watch on YouTube">
+                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderList() {
+      const query = document.getElementById("searchInput").value.toLowerCase().trim();
+      const listEl = document.getElementById("demonList");
+      let items = [];
+
+      const comp = (APP_DATA && APP_DATA.completed) ? APP_DATA.completed : [];
+      const wanted = (APP_DATA && APP_DATA.wanted) ? APP_DATA.wanted : [];
+
+      if (currentTab === "completed") {
+        items = [...comp];
+        if (completedSort === "recent") items.sort((a, b) => b.order - a.order);
+        if (completedSort === "chrono") items.sort((a, b) => a.order - b.order);
+        if (completedSort === "enjoyment") items.sort((a, b) => (b.enjoyment || 0) - (a.enjoyment || 0));
+      } else if (currentTab === "hardest") {
+        items = [...comp];
+        if (hardestFilterOnly) {
+          items = items.filter(d => String(d.hardest).toLowerCase() === "oui");
+        }
+        items.sort((a, b) => (a.top || 9999) - (b.top || 9999));
+      } else if (currentTab === "wanted") {
+        items = [...wanted].sort((a, b) => (a.top || 9999) - (b.top || 9999));
+        if (wantedCategory !== "all") {
+          items = items.filter(d => getWantedCategoryKey(d.top) === wantedCategory);
+        }
+      }
+
+      if (query) {
+        items = items.filter(d =>
+          d.level.toLowerCase().includes(query) ||
+          (d.notes && d.notes.toLowerCase().includes(query)) ||
+          (d.date && d.date.toLowerCase().includes(query)) ||
+          String(d.top).includes(query)
+        );
+      }
+
+      if (items.length === 0) {
+        listEl.innerHTML = `<div style="text-align:center; padding: 40px; color: var(--text-muted);">No Extreme Demons found.</div>`;
+        return;
+      }
+
+      if (currentTab === "wanted" && wantedCategory === "all") {
+        const categories = [
+          { key: "1-150", label: "Top 1 to 150" },
+          { key: "150-400", label: "Top 150 to 400" },
+          { key: "400-800", label: "Top 400 to 800" },
+          { key: "800-1200", label: "Top 800 to 1200" },
+          { key: "1200+", label: "Top 1200+" }
+        ];
+        let html = "";
+        categories.forEach(cat => {
+          const group = items.filter(d => getWantedCategoryKey(d.top) === cat.key);
+          if (group.length > 0) {
+            html += `<div class="wanted-cat-header">${cat.label} (${group.length})</div>`;
+            html += group.map((item, idx) => renderCardHTML(item, idx)).join("");
+          }
+        });
+        listEl.innerHTML = html;
+        return;
+      }
+
+      listEl.innerHTML = items.map((item, idx) => renderCardHTML(item, idx)).join("");
+    }
+
+    // Animation cinématique du cube vers le coin supérieur droit
+    function triggerIntroAnimation() {
+      if (animationTriggered) return;
+      animationTriggered = true;
+
+      const introLoader = document.getElementById("introLoader");
+      const animatedCube = document.getElementById("animatedCube");
+      const headerCube = document.getElementById("headerCube");
+      const container = document.getElementById("mainContainer");
+      const loaderInfo = document.getElementById("loaderInfo");
+
+      if (loaderInfo) loaderInfo.style.opacity = "0";
+
+      if (!animatedCube || !headerCube || !container) {
+        if (introLoader) introLoader.remove();
+        if (container) {
+          container.style.opacity = "1";
+          container.style.pointerEvents = "auto";
+        }
+        return;
+      }
+
+      const startRect = animatedCube.getBoundingClientRect();
+      const endRect = headerCube.getBoundingClientRect();
+
+      const deltaX = (endRect.left + endRect.width / 2) - (startRect.left + startRect.width / 2);
+      const deltaY = (endRect.top + endRect.height / 2) - (startRect.top + startRect.height / 2);
+      const scale = endRect.width / startRect.width;
+
+      animatedCube.style.animation = "none";
+      animatedCube.style.transition = "transform 0.75s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.75s ease, opacity 0.75s ease";
+      animatedCube.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(${scale})`;
+      animatedCube.style.boxShadow = "0 0 15px rgba(255, 255, 255, 0.65)";
+
+      container.style.opacity = "1";
+      container.style.transform = "translateY(0)";
+      container.style.pointerEvents = "auto";
+
+      introLoader.style.backgroundColor = "transparent";
+      introLoader.style.pointerEvents = "none";
+
+      setTimeout(() => {
+        headerCube.style.opacity = "1";
+        introLoader.remove();
+      }, 760);
+    }
+
+    // Lancement avec garantie absolue de 3s maximum
+    window.addEventListener("DOMContentLoaded", () => {
+      applyCubeIcon();
+
+      // Sécurité absolue : déclenchement garanti à 3 000 ms
+      const safetyTimeout = setTimeout(() => {
+        if (!animationTriggered) {
+          console.warn("AREDL API timeout reached (3s). Fallback to data.js");
+          const statusText = document.getElementById("aredlStatusText");
+          const statusDot = document.getElementById("statusDot");
+          if (statusText) statusText.textContent = "AREDL CACHED (LOCAL)";
+          if (statusDot) {
+            statusDot.style.background = "#eab308";
+            statusDot.style.boxShadow = "0 0 8px #eab308";
+          }
+          updateStats();
+          renderSubFilters();
+          renderList();
+          triggerIntroAnimation();
+        }
+      }, 3000);
+
+      // Délai minimum esthétique pour voir le cube pulser (800ms)
+      const minTimer = new Promise(resolve => setTimeout(resolve, 800));
+      const aredlPromise = fetchAredlData(2400);
+
+      Promise.all([minTimer, aredlPromise]).then(([_, result]) => {
+        if (animationTriggered) return;
+        clearTimeout(safetyTimeout);
+
+        const statusText = document.getElementById("aredlStatusText");
+        const statusDot = document.getElementById("statusDot");
+
+        if (result && result.success) {
+          statusText.textContent = "AREDL LIVE";
+          statusDot.style.background = "#22c55e";
+          statusDot.style.boxShadow = "0 0 8px #22c55e";
+        } else {
+          statusText.textContent = "AREDL CACHED (LOCAL)";
+          statusDot.style.background = "#eab308";
+          statusDot.style.boxShadow = "0 0 8px #eab308";
+        }
+
+        updateStats();
+        renderSubFilters();
+        renderList();
+        triggerIntroAnimation();
+      }).catch(err => {
+        console.error("Initialization error:", err);
+        clearTimeout(safetyTimeout);
+        updateStats();
+        renderSubFilters();
+        renderList();
+        triggerIntroAnimation();
+      });
+    });
+  </script>
+</body>
+</html>
