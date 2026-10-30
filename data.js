@@ -1,13 +1,13 @@
-// Configuration visuelle du tracker
+// Visual & threshold settings
 const APP_CONFIG = {
-  cubeIcon: "",       // Mets un lien d'image si tu veux remplacer le cube "mstr." par ton sprite
-  attGreen: 1000,     // En-dessous de ce seuil = vert
-  attRed: 15000,      // Au-dessus de ce seuil = rouge
-  wfGreen: 50,        // Worst fail bas = vert
-  wfRed: 95           // Worst fail haut = rouge
+  cubeIcon: "",
+  attGreen: 1000,
+  attRed: 15000,
+  wfGreen: 50,
+  wfRed: 95
 };
 
-// Tes données d'Extremes Demons
+// Extreme Demons Data
 const APP_DATA = {
   completed: [
     { order: 1, level: "HyperSonic", date: "13/10/2024", enjoyment: 65, worstFail: "91%", attempts: "3252", hardest: "Oui", top: 1148, notes: "Premier extreme" },
@@ -33,13 +33,14 @@ const APP_DATA = {
     { order: 21, level: "Bang Gang", date: "27/08/2026", enjoyment: 90, worstFail: "66%", attempts: "2840", hardest: "Non", top: 1562, notes: "beat avec under_lie, trop bien comme 2 player mais giga chokepoint" }
   ],
   wanted: [
-    { order: 1, level: "Omicron", top: 433, notes: "Objectif Wanted" },
-    { order: 2, level: "Xronier", top: 434, notes: "Objectif Wanted" },
-    { order: 3, level: "Falling up", top: 1242, notes: "Objectif Wanted" },
-    { order: 4, level: "Dark odyssey", top: 1288, notes: "Objectif Wanted" },
-    { order: 5, level: "Gangnam Style", top: 1338, notes: "Objectif Wanted" },
-    { order: 6, level: "Acu", top: 1406, notes: "Objectif Wanted" },
-    { order: 7, level: "Red World", top: 1410, notes: "Objectif Wanted" },
-    { order: 8, level: "CICADA3302", top: 1250, notes: "Objectif Wanted" }
-  ]
+    { order: 1, level: "Omicron", top: 433, notes: "" },
+    { order: 2, level: "Xronier", top: 434, notes: "" },
+    { order: 3, level: "Falling up", top: 1242, notes: "" },
+    { order: 4, level: "Dark odyssey", top: 1288, notes: "" },
+    { order: 5, level: "Gangnam Style", top: 1338, notes: "" },
+    { order: 6, level: "Acu", top: 1406, notes: "" },
+    { order: 7, level: "Red World", top: 1410, notes: "" },
+    { order: 8, level: "CICADA3302", top: 1250, notes: "" }
+  ],
+  progress: []
 };
