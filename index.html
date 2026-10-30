@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mstr Extreme Demon Tracker</title>
+  <title>Mstr GD Tracker</title>
   <link id="pageFavicon" rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect x='2' y='2' width='60' height='60' rx='10' fill='%23ffffff' stroke='%23000000' stroke-width='5'/><rect x='5' y='5' width='54' height='54' rx='7' fill='none' stroke='%23ffffff' stroke-width='2'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia, serif' font-weight='bold' font-size='18' fill='%23000000'>mstr.</text></svg>" />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
@@ -45,7 +45,7 @@
       justify-content: center;
       pointer-events: all;
       overflow: hidden;
-      transition: background-color 0.6s ease;
+      transition: background-color 0.5s ease;
     }
 
     .intro-cube-container {
@@ -100,7 +100,7 @@
       flex-direction: column;
       align-items: center;
       gap: 12px;
-      transition: opacity 0.35s ease;
+      transition: opacity 0.3s ease;
     }
 
     .loader-text {
@@ -140,39 +140,67 @@
       max-width: 980px;
       margin: 0 auto;
       opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: translateY(18px);
+      transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
       pointer-events: none;
     }
 
+    .container.visible {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+      pointer-events: auto !important;
+    }
+
+    /* En-tête : Cube à gauche, titre au milieu, statut AREDL à droite */
     .header-bar {
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 16px;
       margin-bottom: 22px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .mstr-cube {
+      width: 44px;
+      height: 44px;
+      background: #ffffff;
+      border: 3.5px solid #000000;
+      outline: 2px solid #ffffff;
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #000000;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: -0.2px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.65);
+      user-select: none;
+      flex-shrink: 0;
+      overflow: hidden;
+      opacity: 0;
+    }
+
+    .mstr-cube img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .brand h1 {
       font-size: 1.55rem;
       font-weight: 800;
       letter-spacing: 0.5px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
+      color: #ffffff;
       text-shadow: 0 0 10px rgba(255, 255, 255, 0.35);
-    }
-
-    .brand span.tag {
-      background: var(--accent-glow);
-      color: var(--accent);
-      border: 1px solid rgba(255, 255, 255, 0.6);
-      font-size: 0.76rem;
-      padding: 3px 9px;
-      border-radius: 6px;
-      font-weight: 700;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.25);
     }
 
     .header-right {
@@ -204,34 +232,6 @@
       background: #eab308;
       box-shadow: 0 0 8px #eab308;
       transition: background 0.3s, box-shadow 0.3s;
-    }
-
-    .mstr-cube {
-      width: 44px;
-      height: 44px;
-      background: #ffffff;
-      border: 3.5px solid #000000;
-      outline: 2px solid #ffffff;
-      border-radius: 7px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #000000;
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: 0.66rem;
-      font-weight: 700;
-      letter-spacing: -0.2px;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.65);
-      user-select: none;
-      flex-shrink: 0;
-      overflow: hidden;
-      opacity: 0;
-    }
-
-    .mstr-cube img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
     }
 
     /* Statistiques rapides */
@@ -401,9 +401,21 @@
       margin: 14px 0 6px;
       padding-left: 8px;
       border-left: 3px solid #ffffff;
+      animation: tabEntrance 0.3s ease forwards;
     }
 
-    /* Cartes */
+    /* Animation d'entrée des cartes lors du changement d'onglet */
+    @keyframes cardStaggerEntrance {
+      0% {
+        opacity: 0;
+        transform: translateY(12px) scale(0.99);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
     .demon-list {
       display: flex;
       flex-direction: column;
@@ -426,6 +438,8 @@
       background-position: center 38%;
       background-repeat: no-repeat;
       gap: 16px;
+      animation: cardStaggerEntrance 0.32s cubic-bezier(0.16, 1, 0.3, 1) both;
+      animation-delay: calc(var(--delay, 0) * 0.028s);
     }
 
     .demon-card:hover {
@@ -631,11 +645,8 @@
 
     @media (max-width: 720px) {
       .header-bar {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .header-right {
-        align-self: flex-end;
+        flex-direction: row;
+        justify-content: space-between;
       }
       .demon-card {
         flex-direction: column;
@@ -678,18 +689,19 @@
   <div class="container" id="mainContainer">
     <div class="header-bar">
       <div class="brand">
-        <h1>MSTR EXTREME DEMONS <span class="tag">GD TRACKER</span></h1>
+        <!-- Cube replacé à gauche du titre -->
+        <div class="mstr-cube" id="headerCube" title="mstr.">mstr.</div>
+        <h1>MSTR GD TRACKER</h1>
       </div>
       <div class="header-right">
         <div class="aredl-badge" id="aredlStatus">
           <span class="status-dot" id="statusDot"></span>
           <span id="aredlStatusText">CONNECTING...</span>
         </div>
-        <div class="mstr-cube" id="headerCube" title="mstr.">mstr.</div>
       </div>
     </div>
 
-    <!-- Statistiques rapides -->
+    <!-- Statistiques -->
     <div class="stats-strip" id="statsStrip"></div>
 
     <!-- Onglets -->
@@ -705,7 +717,7 @@
       </button>
     </div>
 
-    <!-- Barre de recherche et filtres secondaires -->
+    <!-- Recherche et filtres -->
     <div class="toolbar">
       <input
         type="text"
@@ -721,17 +733,53 @@
     <div class="demon-list" id="demonList"></div>
   </div>
 
-  <!-- Chargement externe des données -->
+  <!-- Chargement des données -->
   <script src="data.js"></script>
 
   <script>
-    // Sécurité au cas où data.js met du temps ou est absent
-    if (typeof APP_DATA === 'undefined') {
-      window.APP_DATA = { completed: [], wanted: [] };
-    }
-    if (typeof APP_CONFIG === 'undefined') {
-      window.APP_CONFIG = { attGreen: 1000, attRed: 15000, wfGreen: 50, wfRed: 95, cubeIcon: "" };
-    }
+    const EMBEDDED_DEFAULT_DATA = {
+      completed: [
+        { order: 1, level: "HyperSonic", date: "13/10/2024", enjoyment: 65, worstFail: "91%", attempts: "3252", hardest: "Oui", top: 1148, notes: "Premier extreme" },
+        { order: 2, level: "Allegiance", date: "18/12/2024", enjoyment: 75, worstFail: "94%", attempts: "1942", hardest: "Oui", top: 1136, notes: "fnaf" },
+        { order: 3, level: "UltraSans", date: "29/01/2025", enjoyment: 98, worstFail: "96%", attempts: "3169", hardest: "Oui", top: 1132, notes: "peak" },
+        { order: 4, level: "Moment", date: "27/02/2025", enjoyment: 75, worstFail: "89% (last click)", attempts: "2023", hardest: "Oui", top: 711, notes: "80 fluke from 19, fait en 2 jours." },
+        { order: 5, level: "Azurite", date: "08/04/2025", enjoyment: 58, worstFail: "69%", attempts: "1697", hardest: "Non", top: 1266, notes: "1 attempt après 2 semaines" },
+        { order: 6, level: "Niwa", date: "07/05/2025", enjoyment: 100, worstFail: "96% (last click)", attempts: "2255", hardest: "Non", top: 1284, notes: "juste trop fun" },
+        { order: 7, level: "Gravity", date: "29/09/2025", enjoyment: 89, worstFail: "89%", attempts: "1600", hardest: "Oui", top: 702, notes: "consistant donc cv" },
+        { order: 8, level: "Deception Dive", date: "08/10/2025", enjoyment: 74, worstFail: "84%", attempts: "1221", hardest: "Non", top: 1101, notes: "unbalanced" },
+        { order: 9, level: "Cataclysm", date: "10/10/2025", enjoyment: 10, worstFail: "74%", attempts: "986", hardest: "Non", top: 1245, notes: "tg monocouille demon" },
+        { order: 10, level: "Electrolux", date: "30/11/2025", enjoyment: 90, worstFail: "90%", attempts: "2127", hardest: "Non", top: 1049, notes: "guitar style" },
+        { order: 11, level: "Freedom08", date: "24/01/2026", enjoyment: 85, worstFail: "84%", attempts: "7637", hardest: "Oui", top: 342, notes: "NEW BEST 84, BEAT B2B" },
+        { order: 12, level: "Nyutopia", date: "30/03/2026", enjoyment: 77, worstFail: "90% (last click)", attempts: "15000", hardest: "Oui", top: 190, notes: "last click x2" },
+        { order: 13, level: "Adomania", date: "07/04/2026", enjoyment: 55, worstFail: "95%", attempts: "5000", hardest: "Non", top: 309, notes: "85 fluke from 19" },
+        { order: 14, level: "Black Blizzard", date: "12/04/2026", enjoyment: 23, worstFail: "81%", attempts: "4367", hardest: "Non", top: 498, notes: "Gambling demon" },
+        { order: 15, level: "BRUTAL", date: "23/04/2026", enjoyment: 90, worstFail: "88%", attempts: "1500-2500", hardest: "Non", top: 1443, notes: "MOGGED" },
+        { order: 16, level: "Devils Disco", date: "15/05/2026", enjoyment: 61, worstFail: "64%", attempts: "2255", hardest: "Non", top: 1407, notes: "rien pour lui" },
+        { order: 17, level: "BROOKLYNBLOODPOP", date: "03/07/2026", enjoyment: 100, worstFail: "59%", attempts: "2234", hardest: "Non", top: 1325, notes: "génial" },
+        { order: 18, level: "Cold Sweat", date: "09/07/2026", enjoyment: 70, worstFail: "75%", attempts: "12435", hardest: "Oui", top: 160, notes: "rng demon" },
+        { order: 19, level: "UNLEASH WHALES WHALE", date: "24/08/2026", enjoyment: 85, worstFail: "64%", attempts: "3048", hardest: "Non", top: 1400, notes: "HARDEST MOBILE" },
+        { order: 20, level: "Sigma Interface", date: "27/08/2026", enjoyment: 93, worstFail: "89%", attempts: "2090", hardest: "Non", top: 980, notes: "peak demon" },
+        { order: 21, level: "Bang Gang", date: "27/08/2026", enjoyment: 90, worstFail: "66%", attempts: "2840", hardest: "Non", top: 1562, notes: "beat 2 player" }
+      ],
+      wanted: [
+        { order: 1, level: "Omicron", top: 433, notes: "Wanted" },
+        { order: 2, level: "Xronier", top: 434, notes: "Wanted" },
+        { order: 3, level: "Falling up", top: 1242, notes: "Wanted" },
+        { order: 4, level: "Dark odyssey", top: 1288, notes: "Wanted" },
+        { order: 5, level: "Gangnam Style", top: 1338, notes: "Wanted" },
+        { order: 6, level: "Acu", top: 1406, notes: "Wanted" },
+        { order: 7, level: "Red World", top: 1410, notes: "Wanted" },
+        { order: 8, level: "CICADA3302", top: 1250, notes: "Wanted" }
+      ]
+    };
+
+    const DATA = (typeof APP_DATA !== 'undefined' && APP_DATA.completed && APP_DATA.completed.length > 0)
+      ? APP_DATA
+      : EMBEDDED_DEFAULT_DATA;
+
+    const CONFIG = (typeof APP_CONFIG !== 'undefined')
+      ? APP_CONFIG
+      : { attGreen: 1000, attRed: 15000, wfGreen: 50, wfRed: 95, cubeIcon: "" };
 
     const BANNER_PALETTES = [
       "linear-gradient(125deg, #000000 0%, #18181b 55%, #3f3f46 100%)",
@@ -749,23 +797,47 @@
     let wantedCategory = "all";
     let animationTriggered = false;
 
+    // Timeout de sécurité garanti à 3 secondes
+    const hardFallbackTimer = setTimeout(() => {
+      if (!animationTriggered) {
+        setAredlBadgeStatus(false);
+        safeRender();
+        triggerIntroAnimation();
+      }
+    }, 3000);
+
+    function setAredlBadgeStatus(isLive) {
+      const statusText = document.getElementById("aredlStatusText");
+      const statusDot = document.getElementById("statusDot");
+      if (statusText && statusDot) {
+        if (isLive) {
+          statusText.textContent = "AREDL LIVE";
+          statusDot.style.background = "#22c55e";
+          statusDot.style.boxShadow = "0 0 8px #22c55e";
+        } else {
+          statusText.textContent = "AREDL CACHED";
+          statusDot.style.background = "#eab308";
+          statusDot.style.boxShadow = "0 0 8px #eab308";
+        }
+      }
+    }
+
     function applyCubeIcon() {
       const headerCube = document.getElementById("headerCube");
       const animatedCube = document.getElementById("animatedCube");
       const favEl = document.getElementById("pageFavicon");
-      if (APP_CONFIG.cubeIcon && APP_CONFIG.cubeIcon.trim() !== "") {
-        headerCube.innerHTML = `<img src="${APP_CONFIG.cubeIcon}" alt="cube" />`;
-        animatedCube.innerHTML = `<img src="${APP_CONFIG.cubeIcon}" alt="cube" />`;
-        favEl.href = APP_CONFIG.cubeIcon;
+      if (CONFIG.cubeIcon && CONFIG.cubeIcon.trim() !== "") {
+        if (headerCube) headerCube.innerHTML = `<img src="${CONFIG.cubeIcon}" alt="cube" />`;
+        if (animatedCube) animatedCube.innerHTML = `<img src="${CONFIG.cubeIcon}" alt="cube" />`;
+        if (favEl) favEl.href = CONFIG.cubeIcon;
       } else {
-        headerCube.textContent = "mstr.";
-        animatedCube.textContent = "mstr.";
-        favEl.href = DEFAULT_SVG_FAVICON;
+        if (headerCube) headerCube.textContent = "mstr.";
+        if (animatedCube) animatedCube.textContent = "mstr.";
+        if (favEl) favEl.href = DEFAULT_SVG_FAVICON;
       }
     }
 
-    // Récupération AREDL avec AbortController (timeout strict de 2.5s)
-    async function fetchAredlData(timeoutMs = 2500) {
+    async function fetchAredlData(timeoutMs = 2200) {
       const controller = new AbortController();
       const timer = setTimeout(() => controller.abort(), timeoutMs);
 
@@ -791,8 +863,8 @@
 
         let updatedCount = 0;
         ["completed", "wanted"].forEach(listKey => {
-          if (APP_DATA && APP_DATA[listKey]) {
-            APP_DATA[listKey].forEach(item => {
+          if (DATA[listKey]) {
+            DATA[listKey].forEach(item => {
               const key = item.level.toLowerCase().trim();
               if (rankMap.has(key)) {
                 const newPos = rankMap.get(key);
@@ -888,12 +960,15 @@
     }
 
     function updateStats() {
-      const comp = (APP_DATA && APP_DATA.completed) ? APP_DATA.completed : [];
-      const wanted = (APP_DATA && APP_DATA.wanted) ? APP_DATA.wanted : [];
+      const comp = DATA.completed || [];
+      const wanted = DATA.wanted || [];
 
-      document.getElementById("count-completed").textContent = comp.length;
-      document.getElementById("count-hardest").textContent = comp.length;
-      document.getElementById("count-wanted").textContent = wanted.length;
+      const countCompEl = document.getElementById("count-completed");
+      const countHardEl = document.getElementById("count-hardest");
+      const countWantEl = document.getElementById("count-wanted");
+      if (countCompEl) countCompEl.textContent = comp.length;
+      if (countHardEl) countHardEl.textContent = comp.length;
+      if (countWantEl) countWantEl.textContent = wanted.length;
 
       const hardestLevel = [...comp].sort((a, b) => a.top - b.top)[0];
       const totalAtt = comp.reduce((sum, d) => sum + parseAttempts(d.attempts), 0);
@@ -901,37 +976,42 @@
         ? (comp.reduce((sum, d) => sum + (Number(d.enjoyment) || 0), 0) / comp.length).toFixed(1)
         : 0;
 
-      document.getElementById("statsStrip").innerHTML = `
-        <div class="stat-card">
-          <div class="label">Completed Extremes</div>
-          <div class="value">${comp.length}</div>
-        </div>
-        <div class="stat-card">
-          <div class="label">Current Hardest</div>
-          <div class="value neon-text">${hardestLevel ? hardestLevel.level + " (#" + hardestLevel.top + ")" : "-"}</div>
-        </div>
-        <div class="stat-card">
-          <div class="label">Total Attempts</div>
-          <div class="value">${totalAtt.toLocaleString('en-US')}</div>
-        </div>
-        <div class="stat-card">
-          <div class="label">Average Enjoyment</div>
-          <div class="value">${avgEnjoyment} / 100</div>
-        </div>
-      `;
+      const stripEl = document.getElementById("statsStrip");
+      if (stripEl) {
+        stripEl.innerHTML = `
+          <div class="stat-card">
+            <div class="label">Completed Extremes</div>
+            <div class="value">${comp.length}</div>
+          </div>
+          <div class="stat-card">
+            <div class="label">Current Hardest</div>
+            <div class="value neon-text">${hardestLevel ? hardestLevel.level + " (#" + hardestLevel.top + ")" : "-"}</div>
+          </div>
+          <div class="stat-card">
+            <div class="label">Total Attempts</div>
+            <div class="value">${totalAtt.toLocaleString('en-US')}</div>
+          </div>
+          <div class="stat-card">
+            <div class="label">Average Enjoyment</div>
+            <div class="value">${avgEnjoyment} / 100</div>
+          </div>
+        `;
+      }
     }
 
     function switchTab(tab) {
       currentTab = tab;
       document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
-      document.getElementById(`tab-${tab}`).classList.add("active");
+      const targetTab = document.getElementById(`tab-${tab}`);
+      if (targetTab) targetTab.classList.add("active");
       renderSubFilters();
       renderList();
     }
 
     function renderSubFilters() {
       const container = document.getElementById("subFilters");
-      const totalComp = (APP_DATA && APP_DATA.completed) ? APP_DATA.completed.length : 0;
+      if (!container) return;
+      const totalComp = DATA.completed ? DATA.completed.length : 0;
       if (currentTab === "completed") {
         container.innerHTML = `
           <button class="chip-btn ${completedSort === 'recent' ? 'active' : ''}" onclick="setCompletedSort('recent')">Most Recent (#${totalComp} → #1)</button>
@@ -989,8 +1069,9 @@
         ? item.yt
         : `https://www.youtube.com/results?search_query=${encodeURIComponent(item.level + " geometry dash extreme demon")}`;
 
+      // Conserve la vraie position dans Hardest Ranking même si on filtre par recherche
       const mainRank = currentTab === "hardest"
-        ? `#${idx + 1}`
+        ? `#${item.hardestRank || (idx + 1)}`
         : (item.top && item.top < 9999 ? `#${item.top}` : `#-`);
 
       const subRank = currentTab === "hardest"
@@ -1003,12 +1084,14 @@
       const lastClick = isLastClickFail(item.worstFail);
       const numWf = parseWorstFail(formattedWf);
 
-      const attBoxStyle = getThresholdColor(numAtt, APP_CONFIG.attGreen, APP_CONFIG.attRed);
-      const wfBoxStyle = lastClick ? "" : getThresholdColor(numWf, APP_CONFIG.wfGreen, APP_CONFIG.wfRed);
+      const attBoxStyle = getThresholdColor(numAtt, CONFIG.attGreen, CONFIG.attRed);
+      const wfBoxStyle = lastClick ? "" : getThresholdColor(numWf, CONFIG.wfGreen, CONFIG.wfRed);
       const wfFlashClass = lastClick ? "last-click-flash" : "";
 
+      const animDelay = Math.min(idx, 15);
+
       return `
-        <div class="demon-card" style="${getBannerStyle(item)}">
+        <div class="demon-card" style="--delay: ${animDelay}; ${getBannerStyle(item)}">
           <div class="card-left">
             <div class="rank-block">
               <div class="rank-number">${mainRank}</div>
@@ -1061,12 +1144,14 @@
     }
 
     function renderList() {
-      const query = document.getElementById("searchInput").value.toLowerCase().trim();
+      const searchEl = document.getElementById("searchInput");
+      const query = searchEl ? searchEl.value.toLowerCase().trim() : "";
       const listEl = document.getElementById("demonList");
+      if (!listEl) return;
       let items = [];
 
-      const comp = (APP_DATA && APP_DATA.completed) ? APP_DATA.completed : [];
-      const wanted = (APP_DATA && APP_DATA.wanted) ? APP_DATA.wanted : [];
+      const comp = DATA.completed || [];
+      const wanted = DATA.wanted || [];
 
       if (currentTab === "completed") {
         items = [...comp];
@@ -1078,7 +1163,12 @@
         if (hardestFilterOnly) {
           items = items.filter(d => String(d.hardest).toLowerCase() === "oui");
         }
+        // Tri officiel du Hardest
         items.sort((a, b) => (a.top || 9999) - (b.top || 9999));
+        // Attribution du rang absolu AVANT le filtre de recherche
+        items.forEach((item, index) => {
+          item.hardestRank = index + 1;
+        });
       } else if (currentTab === "wanted") {
         items = [...wanted].sort((a, b) => (a.top || 9999) - (b.top || 9999));
         if (wantedCategory !== "all") {
@@ -1086,6 +1176,7 @@
         }
       }
 
+      // Application de la recherche textuelle
       if (query) {
         items = items.filter(d =>
           d.level.toLowerCase().includes(query) ||
@@ -1123,10 +1214,23 @@
       listEl.innerHTML = items.map((item, idx) => renderCardHTML(item, idx)).join("");
     }
 
-    // Animation cinématique du cube vers le coin supérieur droit
+    function safeRender() {
+      try {
+        updateStats();
+        renderSubFilters();
+        renderList();
+      } catch (e) {
+        console.error("[Tracker] Render error:", e);
+      }
+    }
+
+    // Animation séquentielle :
+    // 1. Le cube se déplace à sa place (à gauche)
+    // 2. Une fois arrivé, fondu d'apparition du tracker (opacité 0 -> 1)
     function triggerIntroAnimation() {
       if (animationTriggered) return;
       animationTriggered = true;
+      clearTimeout(hardFallbackTimer);
 
       const introLoader = document.getElementById("introLoader");
       const animatedCube = document.getElementById("animatedCube");
@@ -1138,94 +1242,66 @@
 
       if (!animatedCube || !headerCube || !container) {
         if (introLoader) introLoader.remove();
-        if (container) {
-          container.style.opacity = "1";
-          container.style.pointerEvents = "auto";
-        }
+        if (container) container.classList.add("visible");
         return;
       }
 
-      const startRect = animatedCube.getBoundingClientRect();
-      const endRect = headerCube.getBoundingClientRect();
+      try {
+        const startRect = animatedCube.getBoundingClientRect();
+        const endRect = headerCube.getBoundingClientRect();
 
-      const deltaX = (endRect.left + endRect.width / 2) - (startRect.left + startRect.width / 2);
-      const deltaY = (endRect.top + endRect.height / 2) - (startRect.top + startRect.height / 2);
-      const scale = endRect.width / startRect.width;
+        const deltaX = (endRect.left + endRect.width / 2) - (startRect.left + startRect.width / 2);
+        const deltaY = (endRect.top + endRect.height / 2) - (startRect.top + startRect.height / 2);
+        const scale = endRect.width / (startRect.width || 78);
 
-      animatedCube.style.animation = "none";
-      animatedCube.style.transition = "transform 0.75s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.75s ease, opacity 0.75s ease";
-      animatedCube.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(${scale})`;
-      animatedCube.style.boxShadow = "0 0 15px rgba(255, 255, 255, 0.65)";
+        // Étape 1 : Déplacement du cube vers la gauche
+        animatedCube.style.animation = "none";
+        animatedCube.style.transition = "transform 0.72s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.72s ease";
+        animatedCube.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(${scale})`;
+        animatedCube.style.boxShadow = "0 0 15px rgba(255, 255, 255, 0.65)";
 
-      container.style.opacity = "1";
-      container.style.transform = "translateY(0)";
-      container.style.pointerEvents = "auto";
+        // Étape 2 : Dès que le cube a terminé sa course, le tracker apparaît en fondu
+        setTimeout(() => {
+          headerCube.style.opacity = "1";
+          animatedCube.style.opacity = "0";
 
-      introLoader.style.backgroundColor = "transparent";
-      introLoader.style.pointerEvents = "none";
+          container.classList.add("visible");
+          introLoader.style.backgroundColor = "transparent";
+          introLoader.style.pointerEvents = "none";
 
-      setTimeout(() => {
-        headerCube.style.opacity = "1";
-        introLoader.remove();
-      }, 760);
+          setTimeout(() => {
+            if (introLoader) introLoader.remove();
+          }, 650);
+        }, 730);
+      } catch (err) {
+        console.error("[Tracker] Animation error:", err);
+        container.classList.add("visible");
+        if (introLoader) introLoader.remove();
+      }
     }
 
-    // Lancement avec garantie absolue de 3s maximum
-    window.addEventListener("DOMContentLoaded", () => {
+    async function initApp() {
       applyCubeIcon();
 
-      // Sécurité absolue : déclenchement garanti à 3 000 ms
-      const safetyTimeout = setTimeout(() => {
-        if (!animationTriggered) {
-          console.warn("AREDL API timeout reached (3s). Fallback to data.js");
-          const statusText = document.getElementById("aredlStatusText");
-          const statusDot = document.getElementById("statusDot");
-          if (statusText) statusText.textContent = "AREDL CACHED (LOCAL)";
-          if (statusDot) {
-            statusDot.style.background = "#eab308";
-            statusDot.style.boxShadow = "0 0 8px #eab308";
-          }
-          updateStats();
-          renderSubFilters();
-          renderList();
-          triggerIntroAnimation();
-        }
-      }, 3000);
+      const minDisplayTimer = new Promise(resolve => setTimeout(resolve, 800));
+      const aredlFetchPromise = fetchAredlData(2000);
 
-      // Délai minimum esthétique pour voir le cube pulser (800ms)
-      const minTimer = new Promise(resolve => setTimeout(resolve, 800));
-      const aredlPromise = fetchAredlData(2400);
+      try {
+        const [_, aredlResult] = await Promise.all([minDisplayTimer, aredlFetchPromise]);
+        setAredlBadgeStatus(aredlResult && aredlResult.success);
+      } catch (err) {
+        setAredlBadgeStatus(false);
+      }
 
-      Promise.all([minTimer, aredlPromise]).then(([_, result]) => {
-        if (animationTriggered) return;
-        clearTimeout(safetyTimeout);
+      safeRender();
+      triggerIntroAnimation();
+    }
 
-        const statusText = document.getElementById("aredlStatusText");
-        const statusDot = document.getElementById("statusDot");
-
-        if (result && result.success) {
-          statusText.textContent = "AREDL LIVE";
-          statusDot.style.background = "#22c55e";
-          statusDot.style.boxShadow = "0 0 8px #22c55e";
-        } else {
-          statusText.textContent = "AREDL CACHED (LOCAL)";
-          statusDot.style.background = "#eab308";
-          statusDot.style.boxShadow = "0 0 8px #eab308";
-        }
-
-        updateStats();
-        renderSubFilters();
-        renderList();
-        triggerIntroAnimation();
-      }).catch(err => {
-        console.error("Initialization error:", err);
-        clearTimeout(safetyTimeout);
-        updateStats();
-        renderSubFilters();
-        renderList();
-        triggerIntroAnimation();
-      });
-    });
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initApp);
+    } else {
+      initApp();
+    }
   </script>
 </body>
 </html>
