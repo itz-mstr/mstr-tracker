@@ -21,7 +21,7 @@ const APP_DATA = {
       "hardest": "Oui",
       "top": 1395,
       "notes": "Premier extreme",
-      "yt": "",
+      "yt": "https://www.youtube.com/watch?v=YuuGDuAtbyU&list=RDYuuGDuAtbyU&start_radio=1&pp=ygUNaHlwZXJzb25pYyBnZKAHAQ%3D%3D",
       "banner": ""
     },
     {
@@ -35,7 +35,7 @@ const APP_DATA = {
       "hardest": "Oui",
       "top": 1383,
       "notes": "fnaf",
-      "yt": "",
+      "yt": "https://www.youtube.com/watch?v=bKHufTQ42Po&list=RDbKHufTQ42Po&start_radio=1&pp=ygUNYWxsZWdpYW5jZSBnZKAHAQ%3D%3D",
       "banner": ""
     },
     {
@@ -49,7 +49,7 @@ const APP_DATA = {
       "hardest": "Oui",
       "top": 1368,
       "notes": "peak",
-      "yt": "",
+      "yt": "https://www.youtube.com/watch?v=6Nlf6Yd36GM&list=RD6Nlf6Yd36GM&start_radio=1&pp=ygUMdWx0cmFzYW5zIGdkoAcB0gcJCSsMAYcqIYzv",
       "banner": ""
     },
     {
@@ -63,7 +63,7 @@ const APP_DATA = {
       "hardest": "Oui",
       "top": 848,
       "notes": "80 fluke from 19, fait en 2 jours. Dédicaces à /w Sukuna",
-      "yt": "",
+      "yt": "https://www.youtube.com/watch?v=V8Ct8Ym2jAQ&list=RDV8Ct8Ym2jAQ&start_radio=1&pp=ygUJbW9tZW50IGdkoAcB",
       "banner": ""
     },
     {
@@ -77,7 +77,7 @@ const APP_DATA = {
       "hardest": "Non",
       "top": 1266,
       "notes": "1 attempt après ne pas avoir jouer pendant 2 semaine",
-      "yt": "",
+      "yt": "https://www.youtube.com/watch?v=yQRMhKruCPw&pp=ygUKYXp1cml0ZSBnZA%3D%3D",
       "banner": ""
     },
     {
@@ -91,7 +91,7 @@ const APP_DATA = {
       "hardest": "Non",
       "top": 1570,
       "notes": "juste trop fun",
-      "yt": "",
+      "yt": "https://www.youtube.com/watch?v=LoSJsADmyEQ&list=RDLoSJsADmyEQ&start_radio=1&pp=ygUHbml3YSBnZKAHAQ%3D%3D",
       "banner": ""
     },
     {
@@ -105,7 +105,7 @@ const APP_DATA = {
       "hardest": "Oui",
       "top": 855,
       "notes": "pas bien foutu mais consistant donc cv",
-      "yt": "",
+      "yt": "https://www.youtube.com/watch?v=5myLqGFhIw0&list=RD5myLqGFhIw0&start_radio=1&pp=ygUKZ3Jhdml0eSBnZKAHAdIHCQkrDAGHKiGM7w%3D%3D",
       "banner": ""
     },
     {
@@ -119,7 +119,7 @@ const APP_DATA = {
       "hardest": "Non",
       "top": 1337,
       "notes": "j'avoue c un peu unbalanced",
-      "yt": "",
+      "yt": "https://www.youtube.com/watch?v=jJIcx44_4-8&list=RDjJIcx44_4-8&start_radio=1&pp=ygURZGVjZXB0aW9uIGRpdmUgZ2SgBwE%3D",
       "banner": ""
     },
     {
@@ -133,7 +133,7 @@ const APP_DATA = {
       "hardest": "Non",
       "top": 1510,
       "notes": "tg monocouille demon",
-      "yt": "",
+      "yt": "https://www.youtube.com/watch?v=J90L73YOR3k&pp=ygUMY2F0YWNseXNtIGdk",
       "banner": ""
     },
     {
@@ -147,7 +147,7 @@ const APP_DATA = {
       "hardest": "Non",
       "top": 1281,
       "notes": "j'aime meme si c'est guitar pedo style",
-      "yt": "",
+      "yt": "https://www.youtube.com/watch?v=JS_0jD_Ihqc&pp=ygUNZWxlY3Ryb2x1eCBnZA%3D%3D",
       "banner": ""
     },
     {
@@ -161,7 +161,7 @@ const APP_DATA = {
       "hardest": "Oui",
       "top": 427,
       "notes": "NEW BEST 84, BEAT BACK TO BACK L'ATTEMPT D'APRES (c'est peak)",
-      "yt": "",
+      "yt": "https://www.youtube.com/watch?v=7AhCJ8i_AYw&list=RD7AhCJ8i_AYw&start_radio=1&pp=ygUNZnJlZWRvbSAwOCBnZKAHAQ%3D%3D",
       "banner": ""
     },
     {
@@ -175,7 +175,7 @@ const APP_DATA = {
       "hardest": "Oui",
       "top": 219,
       "notes": "last click x2, unluckiest victor mais le niveau est goated donc trql",
-      "yt": "",
+      "yt": "https://www.youtube.com/watch?v=A9py19ijwRM&list=RDA9py19ijwRM&start_radio=1&pp=ygULTnl1dG9waWEgZ2SgBwE%3D",
       "banner": ""
     },
     {
@@ -189,7 +189,7 @@ const APP_DATA = {
       "hardest": "Non",
       "top": 385,
       "notes": "85 fluke from 19 tah moment, sinon niveau frustrant",
-      "yt": "",
+      "yt": "https://www.youtube.com/watch?v=yFuu7-3tnEU&list=RDyFuu7-3tnEU&start_radio=1&pp=ygULYWRvbWFuaWEgZ2SgBwE%3D",
       "banner": ""
     },
     {
@@ -203,7 +203,7 @@ const APP_DATA = {
       "hardest": "Non",
       "top": 574,
       "notes": "Gambling demon, pas fun",
-      "yt": "",
+      "yt": "https://www.youtube.com/watch?v=lsT5TjQ1Ubc&pp=ygURYmxhY2sgYmxpenphcmQgZ2Q%3D",
       "banner": ""
     },
     {
@@ -217,7 +217,7 @@ const APP_DATA = {
       "hardest": "Non",
       "top": 1588,
       "notes": "MOGGED",
-      "yt": "",
+      "yt": "https://www.youtube.com/watch?v=LPnePiLQfkQ&list=RDLPnePiLQfkQ&start_radio=1&pp=ygUJYnJ1dGFsIGdkoAcB",
       "banner": ""
     },
     {
@@ -231,7 +231,7 @@ const APP_DATA = {
       "hardest": "Non",
       "top": 1575,
       "notes": "le niveau a rien pour lui",
-      "yt": "",
+      "yt": "https://www.youtube.com/watch?v=zgsk4Y7UVHc&list=RDzgsk4Y7UVHc&start_radio=1&pp=ygUPZGV2aWxzIGRpc2NvIGdkoAcB",
       "banner": ""
     },
     {
@@ -245,7 +245,7 @@ const APP_DATA = {
       "hardest": "Non",
       "top": 1434,
       "notes": "c'est génial",
-      "yt": "",
+      "yt": "https://www.youtube.com/watch?v=9RXb8gaY54Y&list=RD9RXb8gaY54Y&start_radio=1&pp=ygUVQlJPT0tMWU4gQkxPT0QgUE9QIGdkoAcB0gcJCSsMAYcqIYzv",
       "banner": ""
     },
     {
@@ -259,7 +259,7 @@ const APP_DATA = {
       "hardest": "Oui",
       "top": 184,
       "notes": "rng demon",
-      "yt": "",
+      "yt": "https://www.youtube.com/watch?v=VtyGGWuh7UY&list=RDVtyGGWuh7UY&start_radio=1&pp=ygUNQ29sZCBzd2VhdCBnZKAHAQ%3D%3D",
       "banner": ""
     },
     {
@@ -273,8 +273,9 @@ const APP_DATA = {
       "hardest": "Non",
       "top": 1400,
       "notes": "NEW HARDEST MOBILE",
-      "yt": "",
-      "banner": ""
+      "yt": "https://www.youtube.com/watch?v=LmASsw7tjZM&pp=ygUUdW5sZWFzaCB3aGFsZSB3aGFsZXM%3D",
+      "banner": "",
+      "hardestRank": 15
     },
     {
       "order": 20,
@@ -287,8 +288,9 @@ const APP_DATA = {
       "hardest": "Non",
       "top": 1015,
       "notes": "tout ceux qui disent que c'est boring je vous bz",
-      "yt": "",
-      "banner": ""
+      "yt": "https://www.youtube.com/watch?v=QE3oVDW-jUM&pp=ygUPc2lnbWEgaW50ZXJmYWNl",
+      "banner": "",
+      "hardestRank": 8
     },
     {
       "order": 21,
@@ -301,8 +303,9 @@ const APP_DATA = {
       "hardest": "Non",
       "top": 1562,
       "notes": "beat avec under_lie, trop bien comme 2 player mais giga chokepoint",
-      "yt": "",
-      "banner": ""
+      "yt": "https://www.youtube.com/watch?v=NlkunfaL9tc&list=RDNlkunfaL9tc&start_radio=1&pp=ygUMQmFuZyBnYW5nbmdkoAcB",
+      "banner": "",
+      "hardestRank": 18
     }
   ],
   "wanted": [
