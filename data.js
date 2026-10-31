@@ -328,12 +328,12 @@ const APP_DATA = {
   ],
   "wanted": [
     {
-      "order": 9,
+      "order": 47,
       "level": "Omicron",
       "publisher": "Team Proxima",
       "top": 503,
       "notes": "",
-      "yt": "",
+      "yt": "https://www.youtube.com/watch?v=D4NPWR76V9U&pp=ygUKb21pY3JvbiBnZA%3D%3D",
       "banner": ""
     },
     {
@@ -526,12 +526,12 @@ const APP_DATA = {
       "banner": ""
     },
     {
-      "order": 23,
+      "order": 47,
       "level": "New Record",
       "publisher": "lTemp",
       "top": 714,
       "notes": "",
-      "yt": "https://www.youtube.com/watch?v=Ch3Zr4jee9Y&list=RDCh3Zr4jee9Y&start_radio=1&pp=ygUKbmV3IHJlY29yZKAHAQ%3D%3D",
+      "yt": "https://www.youtube.com/watch?v=GamAMATmTo8&list=RDGamAMATmTo8&start_radio=1&pp=ygUNbmV3IHJlY29yZCBnZKAHAQ%3D%3D",
       "banner": ""
     },
     {
@@ -550,6 +550,222 @@ const APP_DATA = {
       "top": 390,
       "notes": "",
       "yt": "https://www.youtube.com/watch?v=0ip9O83I6qg&list=RD0ip9O83I6qg&start_radio=1&pp=ygUJTHVtaW5hIGdkoAcB",
+      "banner": ""
+    },
+    {
+      "order": 28,
+      "level": "Firework",
+      "publisher": "Trick",
+      "top": 52,
+      "notes": "",
+      "yt": "https://www.youtube.com/watch?v=SuaAscUC8UM&list=RDSuaAscUC8UM&start_radio=1&pp=ygULZmlyZW93cmsgZ2SgBwE%3D",
+      "banner": ""
+    },
+    {
+      "order": 28,
+      "level": "Andromeda",
+      "publisher": "insxne",
+      "top": 20,
+      "notes": "",
+      "yt": "https://www.youtube.com/watch?v=xqQNv-Puq44&pp=ygUJYW5kcm9tZWRh",
+      "banner": ""
+    },
+    {
+      "order": 28,
+      "level": "Saul Goodman",
+      "publisher": "Renn241",
+      "top": 64,
+      "notes": "",
+      "yt": "https://www.youtube.com/watch?v=BVXMXxYAX08&list=RDBVXMXxYAX08&start_radio=1&pp=ygUPc2F1bCBnb29kbWFuIGdkoAcB",
+      "banner": ""
+    },
+    {
+      "order": 29,
+      "level": "BRITNEY NO SCLEARS",
+      "publisher": "wabas",
+      "top": 71,
+      "notes": "",
+      "yt": "https://www.youtube.com/watch?v=Ul24DkMIAvM&list=RDUl24DkMIAvM&start_radio=1&pp=ygUTYnJpdG5leSBubyBzY2xlYXJ6c6AHAdIHCQkrDAGHKiGM7w%3D%3D",
+      "banner": ""
+    },
+    {
+      "order": 30,
+      "level": "Coalescence",
+      "publisher": "amplitron",
+      "top": 99,
+      "notes": "",
+      "yt": "https://www.youtube.com/watch?v=Y0_IB6rsZkY&list=RDY0_IB6rsZkY&start_radio=1&pp=ygUOY29hbGVzY2VuY2UgZ2SgBwE%3D",
+      "banner": ""
+    },
+    {
+      "order": 31,
+      "level": "NEUTRA",
+      "publisher": "Jenkins",
+      "top": 160,
+      "notes": "",
+      "yt": "https://www.youtube.com/watch?v=I9SrcUBnvjs&list=RDI9SrcUBnvjs&start_radio=1&pp=ygUGTkVVVFJBoAcB",
+      "banner": ""
+    },
+    {
+      "order": 32,
+      "level": "Ta1LSD0ll",
+      "publisher": "Ta1LSD0ll",
+      "top": 213,
+      "notes": "",
+      "yt": "https://www.youtube.com/watch?v=jAel_obc7wU&pp=ygUMdGFpbHNkb2xsIGdk",
+      "banner": ""
+    },
+    {
+      "order": 33,
+      "level": "Bloodlust",
+      "publisher": "Knobbelboy",
+      "top": 258,
+      "notes": "",
+      "yt": "https://www.youtube.com/watch?v=CK2xctLZxD0&list=RDCK2xctLZxD0&start_radio=1&pp=ygUMQmxvb2RsdXN0IGdkoAcB",
+      "banner": ""
+    },
+    {
+      "order": 34,
+      "level": "Cobwebs",
+      "publisher": "NineDice",
+      "top": 220,
+      "notes": "",
+      "yt": "https://www.youtube.com/watch?v=cV1iYMF6dGg&pp=ygUKY29id2VicyBnZA%3D%3D",
+      "banner": ""
+    },
+    {
+      "order": 35,
+      "level": "Nhelv",
+      "publisher": "guillester",
+      "top": 270,
+      "notes": "",
+      "yt": "https://www.youtube.com/watch?v=zQLhD3G9VUo&list=RDzQLhD3G9VUo&start_radio=1&pp=ygUFbmhlbHagBwE%3D",
+      "banner": ""
+    },
+    {
+      "order": 36,
+      "level": "Cybernetic Crescent",
+      "publisher": "ViPriN",
+      "top": 371,
+      "notes": "",
+      "yt": "https://www.youtube.com/watch?v=vhHPJAUPBSc&pp=ygUWY3liZXJuZXRpYyBjcmVzY2VudCBnZA%3D%3D",
+      "banner": ""
+    },
+    {
+      "order": 37,
+      "level": "Super Probably Level",
+      "publisher": "Alkali",
+      "top": 415,
+      "notes": "",
+      "yt": "https://www.youtube.com/watch?v=8R8dLxuZhnA&pp=ygUXc3VwZXIgcHJvYmFibHkgbGV2ZWwgZ2Q%3D",
+      "banner": ""
+    },
+    {
+      "order": 38,
+      "level": "Artificial Ascent",
+      "publisher": "ViPriN",
+      "top": 531,
+      "notes": "",
+      "yt": "https://www.youtube.com/watch?v=URwPErFdH7c&list=RDURwPErFdH7c&start_radio=1&pp=ygUUYXJ0aWZpY2lhbCBhc2NlbnQgZ2SgBwE%3D",
+      "banner": ""
+    },
+    {
+      "order": 39,
+      "level": "GREFG",
+      "publisher": "ReymundoTK",
+      "top": 512,
+      "notes": "",
+      "yt": "https://www.youtube.com/watch?v=PfvfiIpybhY&list=RDPfvfiIpybhY&start_radio=1&pp=ygUIZ3JlZmcgZ2SgBwE%3D",
+      "banner": ""
+    },
+    {
+      "order": 40,
+      "level": "Low Death",
+      "publisher": "KrmaL",
+      "top": 540,
+      "notes": "",
+      "yt": "https://www.youtube.com/watch?v=5CJqzJST_oU&list=RD5CJqzJST_oU&start_radio=1&pp=ygUSbG93IGRlYXRoIGdkIGtybWFsoAcB",
+      "banner": ""
+    },
+    {
+      "order": 41,
+      "level": "Bete Noire",
+      "publisher": "ThePurgatory",
+      "top": 546,
+      "notes": "",
+      "yt": "https://www.youtube.com/watch?v=rKzGiV0xg_U&list=RDrKzGiV0xg_U&start_radio=1&pp=ygUMYmV0ZSBub2lyIGdkoAcB",
+      "banner": ""
+    },
+    {
+      "order": 42,
+      "level": "Belloq",
+      "publisher": "Sminx",
+      "top": 547,
+      "notes": "",
+      "yt": "https://www.youtube.com/watch?v=Vt86fz7xaMk&list=RDVt86fz7xaMk&start_radio=1&pp=ygUGYmVsbG9xoAcB",
+      "banner": ""
+    },
+    {
+      "order": 43,
+      "level": "Astral Divinity",
+      "publisher": "Knobbelboy",
+      "top": 586,
+      "notes": "",
+      "yt": "https://www.youtube.com/watch?v=Wt76QZqF-os&list=RDWt76QZqF-os&start_radio=1&pp=ygUSYXN0cmFsIGRpdmluaXR5IGdkoAcB",
+      "banner": ""
+    },
+    {
+      "order": 44,
+      "level": "Butiti III",
+      "publisher": "JonathanGD",
+      "top": 599,
+      "notes": "",
+      "yt": "https://www.youtube.com/watch?v=MHnbcwHNU8g&list=RDMHnbcwHNU8g&start_radio=1&pp=ygUKYnV0aXRpIElJSaAHAQ%3D%3D",
+      "banner": ""
+    },
+    {
+      "order": 45,
+      "level": "Hatred",
+      "publisher": "AZuLer4",
+      "top": 630,
+      "notes": "",
+      "yt": "https://www.youtube.com/watch?v=DnQ-CG2hrZE&list=RDDnQ-CG2hrZE&start_radio=1&pp=ygUJaGF0cmVkIGdkoAcB",
+      "banner": ""
+    },
+    {
+      "order": 46,
+      "level": "Shock Therapy",
+      "publisher": "Arb",
+      "top": 646,
+      "notes": "",
+      "yt": "https://www.youtube.com/watch?v=RhkKFBlVhqs&list=RDRhkKFBlVhqs&start_radio=1&pp=ygUQc2hvY2sgdGhlcmFweSBnZKAHAQ%3D%3D",
+      "banner": ""
+    },
+    {
+      "order": 47,
+      "level": "Subsonic",
+      "publisher": "ViPriN",
+      "top": 660,
+      "notes": "",
+      "yt": "https://www.youtube.com/watch?v=8h_Zx25MQP0&list=RD8h_Zx25MQP0&start_radio=1&pp=ygUIc3Vic29uaWOgBwE%3D",
+      "banner": ""
+    },
+    {
+      "order": 48,
+      "level": "angel",
+      "publisher": "insxne",
+      "top": 887,
+      "notes": "",
+      "yt": "https://www.youtube.com/watch?v=PMMJSRZguik&list=RDPMMJSRZguik&start_radio=1&pp=ygUIYW5nZWwgZ2SgBwE%3D",
+      "banner": ""
+    },
+    {
+      "order": 49,
+      "level": "Brain Power",
+      "publisher": "Zafkiel7",
+      "top": 1112,
+      "notes": "",
+      "yt": "https://www.youtube.com/watch?v=KY4yT1fviOA&list=RDKY4yT1fviOA&start_radio=1&pp=ygUNYnJhaW5wb3dlciBnZKAHAQ%3D%3D",
       "banner": ""
     }
   ],
@@ -760,6 +976,84 @@ const APP_DATA = {
       "updatedAt": 1793411098288,
       "notes": "",
       "yt": "https://www.youtube.com/watch?v=MuHJgxOGqmE&list=RDMuHJgxOGqmE&start_radio=1&pp=ygUIV2FzdXJldGGgBwE%3D",
+      "banner": ""
+    },
+    {
+      "level": "Andromeda",
+      "publisher": "insxne",
+      "top": 20,
+      "attempts": "",
+      "bestFromZero": "",
+      "bestRun": "",
+      "runsCount": "",
+      "updatedAt": 1793457247833,
+      "notes": "",
+      "yt": "https://www.youtube.com/watch?v=xqQNv-Puq44&pp=ygUJYW5kcm9tZWRh",
+      "banner": ""
+    },
+    {
+      "level": "BRITNEY NO SCLEARS",
+      "publisher": "wabas",
+      "top": 71,
+      "attempts": "",
+      "bestFromZero": "",
+      "bestRun": "",
+      "runsCount": "",
+      "updatedAt": 1793457536288,
+      "notes": "",
+      "yt": "https://www.youtube.com/watch?v=Ul24DkMIAvM&list=RDUl24DkMIAvM&start_radio=1&pp=ygUTYnJpdG5leSBubyBzY2xlYXJ6c6AHAdIHCQkrDAGHKiGM7w%3D%3D",
+      "banner": ""
+    },
+    {
+      "level": "Coalescence",
+      "publisher": "amplitron",
+      "top": 99,
+      "attempts": "",
+      "bestFromZero": "",
+      "bestRun": "",
+      "runsCount": "",
+      "updatedAt": 1793457632582,
+      "notes": "",
+      "yt": "https://www.youtube.com/watch?v=Y0_IB6rsZkY&list=RDY0_IB6rsZkY&start_radio=1&pp=ygUOY29hbGVzY2VuY2UgZ2SgBwE%3D",
+      "banner": ""
+    },
+    {
+      "level": "Cobwebs",
+      "publisher": "NineDice",
+      "top": 220,
+      "attempts": "",
+      "bestFromZero": "",
+      "bestRun": "",
+      "runsCount": "",
+      "updatedAt": 1793458034534,
+      "notes": "",
+      "yt": "https://www.youtube.com/watch?v=cV1iYMF6dGg&pp=ygUKY29id2VicyBnZA%3D%3D",
+      "banner": ""
+    },
+    {
+      "level": "GREFG",
+      "publisher": "ReymundoTK",
+      "top": 512,
+      "attempts": "",
+      "bestFromZero": "",
+      "bestRun": "",
+      "runsCount": "",
+      "updatedAt": 1793458652351,
+      "notes": "",
+      "yt": "https://www.youtube.com/watch?v=PfvfiIpybhY&list=RDPfvfiIpybhY&start_radio=1&pp=ygUIZ3JlZmcgZ2SgBwE%3D",
+      "banner": ""
+    },
+    {
+      "level": "Brain Power",
+      "publisher": "Zafkiel7",
+      "top": 1112,
+      "attempts": "",
+      "bestFromZero": "",
+      "bestRun": "",
+      "runsCount": "",
+      "updatedAt": 1793459489117,
+      "notes": "",
+      "yt": "https://www.youtube.com/watch?v=KY4yT1fviOA&list=RDKY4yT1fviOA&start_radio=1&pp=ygUNYnJhaW5wb3dlciBnZKAHAQ%3D%3D",
       "banner": ""
     }
   ]
