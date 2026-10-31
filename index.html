@@ -46,7 +46,6 @@
       overflow: hidden;
     }
 
-    /* Rideau noir d'arrière-plan isolé */
     #loaderBackdrop {
       position: absolute;
       inset: 0;
@@ -73,7 +72,6 @@
       }
     }
 
-    /* Cube animé : bordure 2px et outline 1.5px identiques au cube d'en-tête */
     #animatedCube {
       width: 44px;
       height: 44px;
@@ -241,8 +239,32 @@
     .header-right {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       flex-wrap: wrap;
+    }
+
+    /* Compteur de vues avec icône d'œil SVG */
+    .views-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #0a0a0a;
+      border: 1px solid #27272a;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: #a1a1aa;
+      user-select: none;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    .views-badge svg {
+      width: 14px;
+      height: 14px;
+      fill: #a1a1aa;
+      flex-shrink: 0;
     }
 
     .aredl-badge {
@@ -377,7 +399,7 @@
       fill: #ffffff;
     }
 
-    /* Statistiques rapides */
+    /* Statistiques rapides (Completed, Current Hardest, Currently Doing) */
     .stats-strip {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -644,6 +666,13 @@
       justify-content: space-between;
       gap: 10px;
       flex-wrap: wrap;
+    }
+
+    .wheel-btn-small {
+      padding: 5px 11px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      border-radius: 6px;
     }
 
     .wheel-modes {
@@ -1133,40 +1162,46 @@
     .action-stack {
       display: none;
       flex-direction: column;
-      gap: 4px;
+      gap: 3px;
     }
 
     body.admin-mode .action-stack {
       display: flex;
     }
 
+    .action-row-mini {
+      display: flex;
+      gap: 3px;
+      align-items: center;
+    }
+
     .icon-btn {
       background: rgba(10, 10, 10, 0.85);
       border: 1px solid rgba(255, 255, 255, 0.22);
       color: #d4d4d8;
-      width: 32px;
-      height: 28px;
-      border-radius: 6px;
+      width: 30px;
+      height: 26px;
+      border-radius: 5px;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       transition: all 0.15s;
     }
 
     .icon-btn svg {
-      width: 15px;
-      height: 15px;
+      width: 14px;
+      height: 14px;
       fill: currentColor;
-      transition: transform 0.25s ease;
+      transition: transform 0.2s ease;
     }
 
     .icon-btn.edit-btn:hover {
       background: #ffffff;
       color: #000000;
       border-color: #ffffff;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
     }
 
     .icon-btn.edit-btn:hover svg {
@@ -1177,7 +1212,14 @@
       background: rgba(239, 68, 68, 0.95);
       color: #fff;
       border-color: transparent;
-      box-shadow: 0 0 10px rgba(239, 68, 68, 0.6);
+      box-shadow: 0 0 8px rgba(239, 68, 68, 0.6);
+    }
+
+    .icon-btn.reorder-btn:hover {
+      background: #2563eb;
+      color: #ffffff;
+      border-color: #60a5fa;
+      box-shadow: 0 0 8px rgba(37, 99, 235, 0.6);
     }
 
     /* Modales */
@@ -1347,7 +1389,7 @@
 </head>
 <body>
 
-  <!-- Écran de chargement avec Cube (opacité continue à 1, fond noir isolé) -->
+  <!-- Écran de chargement avec Cube (opacité 1 continue, fond noir isolé) -->
   <div id="introLoader">
     <div id="loaderBackdrop"></div>
     <div class="intro-cube-wrapper" id="cubeGlowWrapper">
@@ -1373,6 +1415,14 @@
       </div>
 
       <div class="header-right fade-section">
+        <!-- Compteur de visites avec icône œil SVG -->
+        <div class="views-badge" id="viewsBadge" title="Total site visits">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zm0 12.5c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+          </svg>
+          <span id="viewsCount">---</span>
+        </div>
+
         <div class="aredl-badge" id="aredlStatus">
           <span class="status-dot" id="statusDot"></span>
           <span id="aredlStatusText">CONNECTING...</span>
@@ -1399,7 +1449,7 @@
       </div>
     </div>
 
-    <!-- Statistiques en haut (3 cases : Completed, Current Hardest, Currently Doing) -->
+    <!-- Statistiques en haut (Completed, Current Hardest, Currently Doing) -->
     <div class="stats-strip fade-section" id="statsStrip"></div>
 
     <!-- Onglets principaux -->
@@ -1681,6 +1731,32 @@
       setTimeout(() => t.classList.remove("show"), 3500);
     }
 
+    // Gestion du compteur de visites (CounterAPI)
+    async function initViewsCounter() {
+      const viewsEl = document.getElementById("viewsCount");
+      if (!viewsEl) return;
+      try {
+        const cached = localStorage.getItem("mstr_gd_tracker_views_cache");
+        if (cached) viewsEl.textContent = Number(cached).toLocaleString("en-US");
+
+        // Appel direct à l'API de compteur gratuit
+        const res = await fetch("https://api.counterapi.dev/v1/mstr-gd-tracker-2026/visits/up", {
+          method: "GET",
+          headers: { "Accept": "application/json" }
+        });
+        if (res.ok) {
+          const data = await res.json();
+          if (data && typeof data.count !== "undefined") {
+            viewsEl.textContent = Number(data.count).toLocaleString("en-US");
+            localStorage.setItem("mstr_gd_tracker_views_cache", data.count);
+          }
+        }
+      } catch (err) {
+        // En cas de blocage réseau ou adblocker, laisse le cache ou un affichage propre
+        if (viewsEl.textContent === "---") viewsEl.textContent = "1";
+      }
+    }
+
     window.addEventListener("keydown", (e) => {
       const tag = (e.target && e.target.tagName) ? e.target.tagName.toLowerCase() : "";
       if (tag === "input" || tag === "textarea" || tag === "select") return;
@@ -1916,14 +1992,32 @@
     }
 
     function getSortedProgressByRecent() {
-      const prog = DATA.progress || [];
-      return prog.map((item, idx) => ({ item, idx }))
-        .sort((a, b) => {
-          const timeA = a.item.updatedAt || (a.idx + 1);
-          const timeB = b.item.updatedAt || (b.idx + 1);
-          return timeB - timeA;
-        })
-        .map(entry => entry.item);
+      return [...(DATA.progress || [])];
+    }
+
+    // Réorganisation manuelle dans Progress (Mode Admin)
+    function moveProgressItem(event, levelName, direction) {
+      event.stopPropagation();
+      const clean = cleanLevelName(levelName).toLowerCase();
+      const idx = DATA.progress.findIndex(p => cleanLevelName(p.level).toLowerCase() === clean);
+      if (idx === -1) return;
+
+      const newIdx = idx + direction;
+      if (newIdx < 0 || newIdx >= DATA.progress.length) return;
+
+      const temp = DATA.progress[idx];
+      DATA.progress[idx] = DATA.progress[newIdx];
+      DATA.progress[newIdx] = temp;
+
+      // Met à jour la chronologie
+      DATA.progress.forEach((p, index) => {
+        p.updatedAt = Date.now() - (index * 1000);
+      });
+
+      markModified();
+      updateStats();
+      renderList();
+      showToast(`Position of "${cleanLevelName(levelName)}" updated.`);
     }
 
     function updateStats() {
@@ -1939,8 +2033,7 @@
       if (countOtherEl) countOtherEl.textContent = wanted.length + prog.length;
 
       const hardestLevel = [...comp].sort((a, b) => a.top - b.top)[0];
-      const recentProgressList = getSortedProgressByRecent();
-      const currentlyDoing = recentProgressList[0];
+      const currentlyDoing = prog[0];
 
       const stripEl = document.getElementById("statsStrip");
       if (stripEl) {
@@ -2053,6 +2146,7 @@
         </div>
       `;
 
+      // Roue de la fortune (Admin Only dans Wanted)
       if (isAdmin && otherSubView === "wanted") {
         const filteredWantedForWheel = wheelCategoryFilter === "all"
           ? DATA.wanted
@@ -2072,7 +2166,7 @@
         html += `
           <div class="wheel-panel">
             <div class="wheel-header">
-              <h3>🎡 Next Extreme Wheel (Admin Only)</h3>
+              <h3>Next Extreme Wheel (Admin Only)</h3>
               <div class="wheel-modes">
                 <button class="chip-btn ${wheelMode === 'selection' ? 'active' : ''}" onclick="setWheelMode('selection')">
                   Selection Mode (1 Spin Winner)
@@ -2089,20 +2183,24 @@
               </div>
               <div class="wheel-controls">
                 <div class="wheel-filter-row">
-                  <span style="font-size:0.8rem; color:var(--text-muted); font-weight:700;">Filter Wheel Levels by Range:</span>
-                  <select class="category-select" onchange="setWheelRangeFilter(this.value)">
-                    <option value="all" ${wheelCategoryFilter === 'all' ? 'selected' : ''}>All Categories</option>
-                    <option value="1-150" ${wheelCategoryFilter === '1-150' ? 'selected' : ''}>Top 1 to 150</option>
-                    <option value="150-400" ${wheelCategoryFilter === '150-400' ? 'selected' : ''}>Top 150 to 400</option>
-                    <option value="400-800" ${wheelCategoryFilter === '400-800' ? 'selected' : ''}>Top 400 to 800</option>
-                    <option value="800-1200" ${wheelCategoryFilter === '800-1200' ? 'selected' : ''}>Top 800 to 1200</option>
-                    <option value="1200+" ${wheelCategoryFilter === '1200+' ? 'selected' : ''}>Top 1200+</option>
-                  </select>
+                  <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+                    <span style="font-size:0.8rem; color:var(--text-muted); font-weight:700;">Filter Checklist:</span>
+                    <select class="category-select" onchange="setWheelRangeFilter(this.value)">
+                      <option value="all" ${wheelCategoryFilter === 'all' ? 'selected' : ''}>All Categories</option>
+                      <option value="1-150" ${wheelCategoryFilter === '1-150' ? 'selected' : ''}>Top 1 to 150</option>
+                      <option value="150-400" ${wheelCategoryFilter === '150-400' ? 'selected' : ''}>Top 150 to 400</option>
+                      <option value="400-800" ${wheelCategoryFilter === '400-800' ? 'selected' : ''}>Top 400 to 800</option>
+                      <option value="800-1200" ${wheelCategoryFilter === '800-1200' ? 'selected' : ''}>Top 800 to 1200</option>
+                      <option value="1200+" ${wheelCategoryFilter === '1200+' ? 'selected' : ''}>Top 1200+</option>
+                    </select>
+                    <button type="button" class="btn wheel-btn-small" onclick="addCategoryToWheel()">+ Add All</button>
+                    <button type="button" class="btn wheel-btn-small" onclick="removeCategoryFromWheel()">- Remove All</button>
+                  </div>
                 </div>
                 <div class="wheel-checklist">${checksHTML || "No wanted levels in this range."}</div>
                 <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
                   <button class="btn btn-primary" onclick="spinWheel()">SPIN THE WHEEL</button>
-                  <button class="btn" onclick="resetWheelPool()">Reset Pool</button>
+                  <button class="btn" onclick="resetWheelPool()">Reset All To Wheel</button>
                 </div>
                 <div class="wheel-result-banner" id="wheelResultText"></div>
               </div>
@@ -2122,12 +2220,25 @@
       renderOtherSection();
     }
 
+    // Le menu déroulant filtre l'affichage sans réinitialiser la sélection
     function setWheelRangeFilter(rangeKey) {
       wheelCategoryFilter = rangeKey;
-      wheelSelectedLevels.clear();
+      renderOtherSection();
+    }
+
+    function addCategoryToWheel() {
       DATA.wanted.forEach(w => {
-        if (rangeKey === "all" || getWantedCategoryKey(w.top) === rangeKey) {
+        if (wheelCategoryFilter === "all" || getWantedCategoryKey(w.top) === wheelCategoryFilter) {
           wheelSelectedLevels.add(w.level);
+        }
+      });
+      renderOtherSection();
+    }
+
+    function removeCategoryFromWheel() {
+      DATA.wanted.forEach(w => {
+        if (wheelCategoryFilter === "all" || getWantedCategoryKey(w.top) === wheelCategoryFilter) {
+          wheelSelectedLevels.delete(w.level);
         }
       });
       renderOtherSection();
@@ -2140,7 +2251,9 @@
     }
 
     function resetWheelPool() {
-      setWheelRangeFilter(wheelCategoryFilter);
+      wheelSelectedLevels.clear();
+      DATA.wanted.forEach(w => wheelSelectedLevels.add(w.level));
+      renderOtherSection();
     }
 
     function drawWheelCanvas() {
@@ -2461,14 +2574,26 @@
                   <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                 </a>
                 <div class="action-stack">
-                  <button class="icon-btn edit-btn" onclick="openEditModal('${listKey}', '${safeRawName}')" title="Edit Extreme">
-                    <svg viewBox="0 0 24 24">
-                      <path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.07,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"/>
-                    </svg>
-                  </button>
-                  <button class="icon-btn delete-btn" onclick="deleteItem('${listKey}', '${safeRawName}')" title="Delete">
-                    🗑
-                  </button>
+                  ${isProgressView ? `
+                    <div class="action-row-mini">
+                      <button class="icon-btn reorder-btn" onclick="moveProgressItem(event, '${safeRawName}', -1)" title="Move Up in Chronology">
+                        <svg viewBox="0 0 24 24"><path d="M7 14l5-5 5 5z"/></svg>
+                      </button>
+                      <button class="icon-btn reorder-btn" onclick="moveProgressItem(event, '${safeRawName}', 1)" title="Move Down in Chronology">
+                        <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                      </button>
+                    </div>
+                  ` : ""}
+                  <div class="action-row-mini">
+                    <button class="icon-btn edit-btn" onclick="openEditModal('${listKey}', '${safeRawName}')" title="Edit Extreme">
+                      <svg viewBox="0 0 24 24">
+                        <path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.07,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"/>
+                      </svg>
+                    </button>
+                    <button class="icon-btn delete-btn" onclick="deleteItem('${listKey}', '${safeRawName}')" title="Delete">
+                      🗑
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -2700,12 +2825,17 @@
       if (editingState) {
         if (editingState.listKey !== targetCat) {
           DATA[editingState.listKey].splice(editingState.index, 1);
-          DATA[targetCat].push(entryData);
+          if (targetCat === "progress") DATA.progress.unshift(entryData);
+          else DATA[targetCat].push(entryData);
         } else {
           DATA[targetCat][editingState.index] = entryData;
         }
       } else {
-        DATA[targetCat].push(entryData);
+        if (targetCat === "progress") {
+          DATA.progress.unshift(entryData);
+        } else {
+          DATA[targetCat].push(entryData);
+        }
         if (targetCat === "wanted") wheelSelectedLevels.add(level);
       }
 
@@ -2720,7 +2850,7 @@
       renderSubFilters();
       renderList();
       closeModal();
-      showToast(`✅ "${cleanLevelName(level)}" saved!`);
+      showToast(`Saved "${cleanLevelName(level)}"!`);
     }
 
     function deleteItem(listKey, levelName) {
@@ -2732,7 +2862,7 @@
         renderOtherSection();
         renderSubFilters();
         renderList();
-        showToast(`🗑 "${cleanLevelName(levelName)}" removed.`);
+        showToast(`Removed "${cleanLevelName(levelName)}".`);
       }
     }
 
@@ -2761,7 +2891,7 @@
       markModified();
       closeSettingsModal();
       renderList();
-      showToast("⚙️ Settings updated!");
+      showToast("Settings updated!");
     }
 
     function safeRender() {
@@ -2775,7 +2905,6 @@
       }
     }
 
-    // Animation garantie sans disparition du cube
     function triggerIntroAnimation() {
       if (animationTriggered) return;
       animationTriggered = true;
@@ -2816,18 +2945,18 @@
         });
 
         flyAnim.onfinish = () => {
-          // Le cube d'arrivée prend le relais immédiatement
+          // 1. Le cube d'arrivée prend le relais immédiatement
           headerCube.style.opacity = "1";
 
-          // Le fond noir s'efface en arrière-plan sans masquer le cube
+          // 2. Le fond noir s'efface en arrière-plan sans masquer le cube
           if (loaderBackdrop) {
             loaderBackdrop.style.opacity = "0";
           }
 
-          // Le reste du tracker apparaît en fondu autour du cube
+          // 3. Le reste du tracker apparaît en fondu autour du cube
           container.classList.add("revealed");
 
-          // Le cube animé reste présent jusqu'à la disparition complète du rideau noir
+          // 4. Le cube animé reste présent jusqu'à la disparition complète du rideau noir
           setTimeout(() => {
             if (introLoader) introLoader.remove();
           }, 600);
@@ -2841,6 +2970,7 @@
 
     async function initApp() {
       applyCubeIcon();
+      initViewsCounter();
 
       const minDisplayTimer = new Promise(resolve => setTimeout(resolve, 850));
       const aredlFetchPromise = fetchAredlData(2200);
