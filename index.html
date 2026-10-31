@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mstr GD Tracker</title>
-  <link id="pageFavicon" rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect x='2' y='2' width='60' height='60' rx='8' fill='%23ffffff' stroke='%23000000' stroke-width='3.5'/><rect x='4' y='4' width='56' height='56' rx='6' fill='none' stroke='%23ffffff' stroke-width='1.5'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia, serif' font-weight='bold' font-size='18' fill='%23000000'>mstr.</text></svg>" />
+  <link id="pageFavicon" rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect x='2' y='2' width='60' height='60' rx='8' fill='%23ffffff' stroke='%23000000' stroke-width='3'/><rect x='4' y='4' width='56' height='56' rx='6' fill='none' stroke='%23ffffff' stroke-width='1.5'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia, serif' font-weight='bold' font-size='18' fill='%23000000'>mstr.</text></svg>" />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -46,13 +46,13 @@
       overflow: hidden;
     }
 
-    /* Fond noir d'arrière-plan qui s'efface DERRIÈRE le cube */
+    /* Rideau noir d'arrière-plan isolé */
     #loaderBackdrop {
       position: absolute;
       inset: 0;
       background-color: #000000;
       z-index: 1;
-      transition: opacity 0.52s ease;
+      transition: opacity 0.55s ease;
       pointer-events: all;
     }
 
@@ -73,12 +73,12 @@
       }
     }
 
-    /* Le cube animé a STRICTEMENT les mêmes bordures amincies et dimensions que le cube final */
+    /* Cube animé : bordure 2px et outline 1.5px identiques au cube d'en-tête */
     #animatedCube {
       width: 44px;
       height: 44px;
       background: #ffffff;
-      border: 2.5px solid #000000;
+      border: 2px solid #000000;
       outline: 1.5px solid #ffffff;
       border-radius: 6px;
       display: flex;
@@ -92,7 +92,7 @@
       user-select: none;
       overflow: hidden;
       transform-origin: center center;
-      transform: scale(1.8636);
+      transform: scale(1.75);
       box-shadow: 0 0 15px rgba(255, 255, 255, 0.65);
       will-change: transform;
       opacity: 1 !important;
@@ -186,7 +186,7 @@
       width: 44px;
       height: 44px;
       background: #ffffff;
-      border: 2.5px solid #000000;
+      border: 2px solid #000000;
       outline: 1.5px solid #ffffff;
       border-radius: 6px;
       display: flex;
@@ -460,7 +460,7 @@
       border-radius: 3px 3px 0 0;
     }
 
-    /* Navigation interne de l'onglet OTHER */
+    /* Navigation interne OTHER */
     .other-hub-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 340px));
@@ -1644,7 +1644,7 @@
       "linear-gradient(125deg, #030303 0%, #171717 50%, #4b5563 100%)"
     ];
 
-    const DEFAULT_SVG_FAVICON = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect x='2' y='2' width='60' height='60' rx='8' fill='%23ffffff' stroke='%23000000' stroke-width='3.5'/><rect x='4' y='4' width='56' height='56' rx='6' fill='none' stroke='%23ffffff' stroke-width='1.5'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia, serif' font-weight='bold' font-size='18' fill='%23000000'>mstr.</text></svg>";
+    const DEFAULT_SVG_FAVICON = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect x='2' y='2' width='60' height='60' rx='8' fill='%23ffffff' stroke='%23000000' stroke-width='3'/><rect x='4' y='4' width='56' height='56' rx='6' fill='none' stroke='%23ffffff' stroke-width='1.5'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia, serif' font-weight='bold' font-size='18' fill='%23000000'>mstr.</text></svg>";
 
     let currentTab = "completed";
     let otherSubView = "menu";
@@ -2775,7 +2775,7 @@
       }
     }
 
-    // Animation fluide : transition d'échelle 1.8636 -> 1 sans altérer l'opacité du cube
+    // Animation garantie sans disparition du cube
     function triggerIntroAnimation() {
       if (animationTriggered) return;
       animationTriggered = true;
@@ -2784,11 +2784,13 @@
       const introLoader = document.getElementById("introLoader");
       const loaderBackdrop = document.getElementById("loaderBackdrop");
       const animatedCube = document.getElementById("animatedCube");
+      const cubeGlowWrapper = document.getElementById("cubeGlowWrapper");
       const headerCube = document.getElementById("headerCube");
       const container = document.getElementById("mainContainer");
       const loaderInfo = document.getElementById("loaderInfo");
 
       if (loaderInfo) loaderInfo.style.opacity = "0";
+      if (cubeGlowWrapper) cubeGlowWrapper.style.animation = "none";
 
       if (!animatedCube || !headerCube || !container) {
         if (introLoader) introLoader.remove();
@@ -2805,8 +2807,8 @@
 
       if (typeof animatedCube.animate === "function") {
         const flyAnim = animatedCube.animate([
-          { transform: "translate(0px, 0px) scale(1.8636)", opacity: 1 },
-          { transform: `translate(${deltaX}px, ${deltaY}px) scale(1)`, opacity: 1 }
+          { transform: "translate(0px, 0px) scale(1.75)" },
+          { transform: `translate(${deltaX}px, ${deltaY}px) scale(1)` }
         ], {
           duration: 820,
           easing: "cubic-bezier(0.2, 1, 0.35, 1)",
@@ -2814,19 +2816,21 @@
         });
 
         flyAnim.onfinish = () => {
-          // 1. Le cube d'arrivée prend le relais immédiatement à 100%
+          // Le cube d'arrivée prend le relais immédiatement
           headerCube.style.opacity = "1";
-          animatedCube.style.visibility = "hidden";
 
-          // 2. Le fond noir s'efface DERRIÈRE le cube
-          if (loaderBackdrop) loaderBackdrop.style.opacity = "0";
+          // Le fond noir s'efface en arrière-plan sans masquer le cube
+          if (loaderBackdrop) {
+            loaderBackdrop.style.opacity = "0";
+          }
 
-          // 3. Le reste du tracker apparaît en fondu autour du cube
+          // Le reste du tracker apparaît en fondu autour du cube
           container.classList.add("revealed");
 
+          // Le cube animé reste présent jusqu'à la disparition complète du rideau noir
           setTimeout(() => {
             if (introLoader) introLoader.remove();
-          }, 550);
+          }, 600);
         };
       } else {
         headerCube.style.opacity = "1";
