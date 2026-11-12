@@ -19,11 +19,11 @@ const APP_DATA = {
       "worstFail": "91%",
       "attempts": "3252",
       "hardest": "Oui",
-      "top": 1399,
+      "top": 1402,
       "notes": "Premier extreme",
       "yt": "https://www.youtube.com/watch?v=YuuGDuAtbyU&list=RDYuuGDuAtbyU&start_radio=1&pp=ygUNaHlwZXJzb25pYyBnZKAHAQ%3D%3D",
       "banner": "",
-      "hardestRank": 14
+      "hardestRank": 16
     },
     {
       "order": 2,
@@ -34,11 +34,11 @@ const APP_DATA = {
       "worstFail": "94%",
       "attempts": "1942",
       "hardest": "Oui",
-      "top": 1387,
+      "top": 1390,
       "notes": "fnaf",
       "yt": "https://www.youtube.com/watch?v=bKHufTQ42Po&list=RDbKHufTQ42Po&start_radio=1&pp=ygUNYWxsZWdpYW5jZSBnZKAHAQ%3D%3D",
       "banner": "",
-      "hardestRank": 13
+      "hardestRank": 14
     },
     {
       "order": 3,
@@ -49,11 +49,11 @@ const APP_DATA = {
       "worstFail": "96%",
       "attempts": "3169",
       "hardest": "Oui",
-      "top": 1372,
+      "top": 1374,
       "notes": "peak",
       "yt": "https://www.youtube.com/watch?v=6Nlf6Yd36GM&list=RD6Nlf6Yd36GM&start_radio=1&pp=ygUMdWx0cmFzYW5zIGdkoAcB0gcJCSsMAYcqIYzv",
       "banner": "",
-      "hardestRank": 12
+      "hardestRank": 13
     },
     {
       "order": 4,
@@ -64,11 +64,11 @@ const APP_DATA = {
       "worstFail": "89% (last click)",
       "attempts": "2023",
       "hardest": "Oui",
-      "top": 852,
+      "top": 854,
       "notes": "80 fluke from 19, fait en 2 jours. Dédicaces à /w Sukuna",
       "yt": "https://www.youtube.com/watch?v=V8Ct8Ym2jAQ&list=RDV8Ct8Ym2jAQ&start_radio=1&pp=ygUJbW9tZW50IGdkoAcB",
       "banner": "",
-      "hardestRank": 6
+      "hardestRank": 7
     },
     {
       "order": 5,
@@ -83,7 +83,7 @@ const APP_DATA = {
       "notes": "1 attempt après ne pas avoir jouer pendant 2 semaine",
       "yt": "https://www.youtube.com/watch?v=yQRMhKruCPw&pp=ygUKYXp1cml0ZSBnZA%3D%3D",
       "banner": "",
-      "hardestRank": 9
+      "hardestRank": 10
     },
     {
       "order": 6,
@@ -94,11 +94,11 @@ const APP_DATA = {
       "worstFail": "96% (last click)",
       "attempts": "2255",
       "hardest": "Non",
-      "top": 1574,
+      "top": 1578,
       "notes": "juste trop fun",
       "yt": "https://www.youtube.com/watch?v=LoSJsADmyEQ&list=RDLoSJsADmyEQ&start_radio=1&pp=ygUHbml3YSBnZKAHAQ%3D%3D",
       "banner": "",
-      "hardestRank": 20
+      "hardestRank": 21
     },
     {
       "order": 7,
@@ -109,11 +109,11 @@ const APP_DATA = {
       "worstFail": "89%",
       "attempts": "1600",
       "hardest": "Oui",
-      "top": 859,
+      "top": 860,
       "notes": "pas bien foutu mais consistant donc cv",
       "yt": "https://www.youtube.com/watch?v=5myLqGFhIw0&list=RD5myLqGFhIw0&start_radio=1&pp=ygUKZ3Jhdml0eSBnZKAHAdIHCQkrDAGHKiGM7w%3D%3D",
       "banner": "",
-      "hardestRank": 7
+      "hardestRank": 8
     },
     {
       "order": 8,
@@ -124,11 +124,11 @@ const APP_DATA = {
       "worstFail": "84%",
       "attempts": "1221",
       "hardest": "Non",
-      "top": 1341,
+      "top": 1343,
       "notes": "j'avoue c un peu unbalanced",
       "yt": "https://www.youtube.com/watch?v=jJIcx44_4-8&list=RDjJIcx44_4-8&start_radio=1&pp=ygURZGVjZXB0aW9uIGRpdmUgZ2SgBwE%3D",
       "banner": "",
-      "hardestRank": 11
+      "hardestRank": 12
     },
     {
       "order": 9,
@@ -139,11 +139,11 @@ const APP_DATA = {
       "worstFail": "74%",
       "attempts": "986",
       "hardest": "Non",
-      "top": 1515,
+      "top": 1519,
       "notes": "tg monocouille demon",
       "yt": "https://www.youtube.com/watch?v=J90L73YOR3k&pp=ygUMY2F0YWNseXNtIGdk",
       "banner": "",
-      "hardestRank": 18
+      "hardestRank": 19
     },
     {
       "order": 10,
@@ -154,11 +154,11 @@ const APP_DATA = {
       "worstFail": "90%",
       "attempts": "2127",
       "hardest": "Non",
-      "top": 1287,
+      "top": 1289,
       "notes": "j'aime meme si c'est guitar pedo style",
       "yt": "https://www.youtube.com/watch?v=JS_0jD_Ihqc&pp=ygUNZWxlY3Ryb2x1eCBnZA%3D%3D",
       "banner": "",
-      "hardestRank": 10
+      "hardestRank": 11
     },
     {
       "order": 11,
@@ -169,7 +169,7 @@ const APP_DATA = {
       "worstFail": "84%",
       "attempts": "7637",
       "hardest": "Oui",
-      "top": 430,
+      "top": 431,
       "notes": "NEW BEST 84, BEAT BACK TO BACK L'ATTEMPT D'APRES (c'est peak)",
       "yt": "https://www.youtube.com/watch?v=7AhCJ8i_AYw&list=RD7AhCJ8i_AYw&start_radio=1&pp=ygUNZnJlZWRvbSAwOCBnZKAHAQ%3D%3D",
       "banner": "",
@@ -184,7 +184,7 @@ const APP_DATA = {
       "worstFail": "90% (last click)",
       "attempts": "15000",
       "hardest": "Oui",
-      "top": 221,
+      "top": 222,
       "notes": "last click x2, unluckiest victor mais le niveau est goated donc trql",
       "yt": "https://www.youtube.com/watch?v=A9py19ijwRM&list=RDA9py19ijwRM&start_radio=1&pp=ygULTnl1dG9waWEgZ2SgBwE%3D",
       "banner": "",
@@ -199,7 +199,7 @@ const APP_DATA = {
       "worstFail": "95%",
       "attempts": "5000",
       "hardest": "Non",
-      "top": 388,
+      "top": 389,
       "notes": "85 fluke from 19 tah moment, sinon niveau frustrant",
       "yt": "https://www.youtube.com/watch?v=yFuu7-3tnEU&list=RDyFuu7-3tnEU&start_radio=1&pp=ygULYWRvbWFuaWEgZ2SgBwE%3D",
       "banner": "",
@@ -214,7 +214,7 @@ const APP_DATA = {
       "worstFail": "81%",
       "attempts": "4367",
       "hardest": "Non",
-      "top": 578,
+      "top": 579,
       "notes": "Gambling demon, pas fun",
       "yt": "https://www.youtube.com/watch?v=lsT5TjQ1Ubc&pp=ygURYmxhY2sgYmxpenphcmQgZ2Q%3D",
       "banner": "",
@@ -229,11 +229,11 @@ const APP_DATA = {
       "worstFail": "88%",
       "attempts": "1500-2500",
       "hardest": "Non",
-      "top": 1592,
+      "top": 1596,
       "notes": "MOGGED",
       "yt": "https://www.youtube.com/watch?v=LPnePiLQfkQ&list=RDLPnePiLQfkQ&start_radio=1&pp=ygUJYnJ1dGFsIGdkoAcB",
       "banner": "",
-      "hardestRank": 22
+      "hardestRank": 23
     },
     {
       "order": 16,
@@ -244,11 +244,11 @@ const APP_DATA = {
       "worstFail": "64%",
       "attempts": "2255",
       "hardest": "Non",
-      "top": 1579,
+      "top": 1583,
       "notes": "le niveau a rien pour lui",
       "yt": "https://www.youtube.com/watch?v=zgsk4Y7UVHc&list=RDzgsk4Y7UVHc&start_radio=1&pp=ygUPZGV2aWxzIGRpc2NvIGdkoAcB",
       "banner": "",
-      "hardestRank": 21
+      "hardestRank": 22
     },
     {
       "order": 17,
@@ -259,11 +259,11 @@ const APP_DATA = {
       "worstFail": "59%",
       "attempts": "2234",
       "hardest": "Non",
-      "top": 1438,
+      "top": 1440,
       "notes": "c'est génial",
       "yt": "https://www.youtube.com/watch?v=9RXb8gaY54Y&list=RD9RXb8gaY54Y&start_radio=1&pp=ygUVQlJPT0tMWU4gQkxPT0QgUE9QIGdkoAcB0gcJCSsMAYcqIYzv",
       "banner": "",
-      "hardestRank": 16
+      "hardestRank": 17
     },
     {
       "order": 18,
@@ -274,7 +274,7 @@ const APP_DATA = {
       "worstFail": "75%",
       "attempts": "12435",
       "hardest": "Oui",
-      "top": 186,
+      "top": 187,
       "notes": "rng demon",
       "yt": "https://www.youtube.com/watch?v=VtyGGWuh7UY&list=RDVtyGGWuh7UY&start_radio=1&pp=ygUNQ29sZCBzd2VhdCBnZKAHAQ%3D%3D",
       "banner": "",
@@ -304,11 +304,11 @@ const APP_DATA = {
       "worstFail": "89%",
       "attempts": "2090",
       "hardest": "Non",
-      "top": 1019,
+      "top": 1020,
       "notes": "tout ceux qui disent que c'est boring je vous bz",
       "yt": "https://www.youtube.com/watch?v=QE3oVDW-jUM&pp=ygUPc2lnbWEgaW50ZXJmYWNl",
       "banner": "",
-      "hardestRank": 8
+      "hardestRank": 9
     },
     {
       "order": 21,
@@ -323,7 +323,7 @@ const APP_DATA = {
       "notes": "beat avec under_lie, trop bien comme 2 player mais giga chokepoint",
       "yt": "https://www.youtube.com/watch?v=NlkunfaL9tc&list=RDNlkunfaL9tc&start_radio=1&pp=ygUMQmFuZyBnYW5nbmdkoAcB",
       "banner": "",
-      "hardestRank": 19
+      "hardestRank": 20
     },
     {
       "order": 22,
@@ -334,11 +334,26 @@ const APP_DATA = {
       "worstFail": "95%",
       "attempts": "765",
       "hardest": "Non",
-      "top": 1468,
+      "top": 1472,
       "notes": "fun mais c'est tlm predrop carried donc sa baisse l'enjoyment",
       "yt": "https://www.youtube.com/watch?v=KJDvv9RybuI&list=RDKJDvv9RybuI&start_radio=1&pp=ygUMbWFrZSBpdCBkcm9woAcB",
       "banner": "",
-      "hardestRank": 17
+      "hardestRank": 18
+    },
+    {
+      "order": 23,
+      "level": "New Record",
+      "publisher": "lTemp",
+      "date": "12/11/2026",
+      "enjoyment": 27,
+      "worstFail": "95%",
+      "attempts": "4556",
+      "hardest": "Non",
+      "top": 719,
+      "notes": "true gambling demon",
+      "yt": "https://www.youtube.com/watch?v=s2pG1A3SZ9E&list=RDs2pG1A3SZ9E&start_radio=1&pp=ygUNbmV3IHJlY29yZCBnZKAHAQ%3D%3D",
+      "banner": "",
+      "hardestRank": 6
     }
   ],
   "wanted": [
@@ -346,7 +361,7 @@ const APP_DATA = {
       "order": 47,
       "level": "Omicron",
       "publisher": "Team Proxima",
-      "top": 507,
+      "top": 508,
       "notes": "",
       "yt": "https://www.youtube.com/watch?v=D4NPWR76V9U&pp=ygUKb21pY3JvbiBnZA%3D%3D",
       "banner": ""
@@ -355,7 +370,7 @@ const APP_DATA = {
       "order": 9,
       "level": "Xronier",
       "publisher": "zJinoBeatz",
-      "top": 555,
+      "top": 556,
       "notes": "",
       "yt": "https://www.youtube.com/watch?v=MV_6CoBr74c&pp=ygUKeHJvbmllciBnZA%3D%3D",
       "banner": ""
@@ -364,7 +379,7 @@ const APP_DATA = {
       "order": 9,
       "level": "Falling up",
       "publisher": "KrmaL",
-      "top": 1225,
+      "top": 1227,
       "notes": "",
       "yt": "https://www.youtube.com/watch?v=dsyvbmz1Yls&list=RDdsyvbmz1Yls&start_radio=1&pp=ygUKZmFsbGluZyB1cKAHAQ%3D%3D",
       "banner": ""
@@ -373,7 +388,7 @@ const APP_DATA = {
       "order": 9,
       "level": "Dark Odyssey",
       "publisher": "JonathanGD",
-      "top": 1465,
+      "top": 1468,
       "notes": "",
       "yt": "https://www.youtube.com/watch?v=le10Vvapvh0&list=RDle10Vvapvh0&start_radio=1&pp=ygUPRGFyayBvZHlzc2V5IGdkoAcB",
       "banner": ""
@@ -382,7 +397,7 @@ const APP_DATA = {
       "order": 9,
       "level": "Gangnam Style",
       "publisher": "SkorchXP",
-      "top": 1532,
+      "top": 1535,
       "notes": "",
       "yt": "https://www.youtube.com/watch?v=u4pXBUvuvNw&list=RDu4pXBUvuvNw&start_radio=1&pp=ygUQR2FuZ25hbSBzdHlsZSBnZKAHAQ%3D%3D",
       "banner": ""
@@ -391,7 +406,7 @@ const APP_DATA = {
       "order": 9,
       "level": "Acu",
       "publisher": "Neigefeu",
-      "top": 1609,
+      "top": 1613,
       "notes": "",
       "yt": "https://www.youtube.com/watch?v=qTE6hE1a_vU&list=RDqTE6hE1a_vU&start_radio=1&pp=ygUDQUNVoAcB",
       "banner": ""
@@ -400,7 +415,7 @@ const APP_DATA = {
       "order": 9,
       "level": "Red World",
       "publisher": "saRy",
-      "top": 1613,
+      "top": 1617,
       "notes": "",
       "yt": "https://www.youtube.com/watch?v=ZH8iubNQBXE&pp=ygUMUmVkIFdvcmxkIGdk",
       "banner": ""
@@ -409,7 +424,7 @@ const APP_DATA = {
       "order": 9,
       "level": "CICADA3302",
       "publisher": "Darwin",
-      "top": 1380,
+      "top": 1383,
       "notes": "",
       "yt": "https://www.youtube.com/watch?v=DsM-e8yF5ys&list=RDDsM-e8yF5ys&start_radio=1&pp=ygUNQ0lDQURBMzMwMiBnZKAHAQ%3D%3D",
       "banner": ""
@@ -418,7 +433,7 @@ const APP_DATA = {
       "order": 11,
       "level": "LIMBO",
       "publisher": "Mindcap",
-      "top": 80,
+      "top": 81,
       "notes": "",
       "yt": "https://www.youtube.com/watch?v=OgAlXX1goYo&list=RDOgAlXX1goYo&start_radio=1&pp=ygUFbGltYm-gBwHSBwkJKwwBhyohjO8%3D",
       "banner": ""
@@ -436,7 +451,7 @@ const APP_DATA = {
       "order": 11,
       "level": "Bausha Vortex",
       "publisher": "Pennutoh",
-      "top": 607,
+      "top": 608,
       "notes": "",
       "yt": "https://www.youtube.com/watch?v=ghxM2V4QnGk&list=RDghxM2V4QnGk&start_radio=1&pp=ygUNYmF1c2hhIHZvcnRleKAHAQ%3D%3D",
       "banner": ""
@@ -445,7 +460,7 @@ const APP_DATA = {
       "order": 12,
       "level": "Cat Planet",
       "publisher": "icedcave",
-      "top": 1033,
+      "top": 1034,
       "notes": "",
       "yt": "https://www.youtube.com/watch?v=Y6tQx5ty_u8&pp=ygUNY2F0IHBsYW5ldCBnZA%3D%3D",
       "banner": ""
@@ -454,7 +469,7 @@ const APP_DATA = {
       "order": 13,
       "level": "Bloodbath",
       "publisher": "Riot",
-      "top": 860,
+      "top": 861,
       "notes": "",
       "yt": "https://www.youtube.com/watch?v=A6xe4tKdx_c&list=RDA6xe4tKdx_c&start_radio=1&pp=ygUJYmxvb2RiYXRooAcB",
       "banner": ""
@@ -463,7 +478,7 @@ const APP_DATA = {
       "order": 14,
       "level": "Blade of Justice",
       "publisher": "Manix648",
-      "top": 766,
+      "top": 767,
       "notes": "",
       "yt": "https://www.youtube.com/watch?v=pQc8KL-n20Y&list=RDpQc8KL-n20Y&start_radio=1&pp=ygUQQmxhZGUgb2YganVzdGljZaAHAQ%3D%3D",
       "banner": ""
@@ -472,7 +487,7 @@ const APP_DATA = {
       "order": 15,
       "level": "Shutdown",
       "publisher": "OliSW",
-      "top": 336,
+      "top": 337,
       "notes": "",
       "yt": "https://www.youtube.com/watch?v=kuwudym1-vM&list=RDkuwudym1-vM&start_radio=1&pp=ygULc2h1dGRvd24gZ2SgBwE%3D",
       "banner": ""
@@ -481,7 +496,7 @@ const APP_DATA = {
       "order": 16,
       "level": "Nervhell",
       "publisher": "ASVTeam",
-      "top": 60,
+      "top": 61,
       "notes": "",
       "yt": "https://www.youtube.com/watch?v=85Honcoc3aw&list=RD85Honcoc3aw&start_radio=1&pp=ygUIbmVydmhlbGygBwE%3D",
       "banner": ""
@@ -490,7 +505,7 @@ const APP_DATA = {
       "order": 17,
       "level": "Congregation",
       "publisher": "Presta",
-      "top": 280,
+      "top": 281,
       "notes": "",
       "yt": "https://www.youtube.com/watch?v=jpjl0PGjMF8&list=RDjpjl0PGjMF8&start_radio=1&pp=ygUMY29uZ3JlZ2F0aW9uoAcB",
       "banner": ""
@@ -499,7 +514,7 @@ const APP_DATA = {
       "order": 18,
       "level": "The Lost Existence",
       "publisher": "JonathanGD",
-      "top": 1495,
+      "top": 1499,
       "notes": "",
       "yt": "https://www.youtube.com/watch?v=-GDcaQiJCaU&list=RD-GDcaQiJCaU&start_radio=1&pp=ygUSVGhlIGxvc3QgZXhpc3RlbmNloAcB",
       "banner": ""
@@ -508,7 +523,7 @@ const APP_DATA = {
       "order": 19,
       "level": "Digital Descent",
       "publisher": "ViPriN",
-      "top": 502,
+      "top": 503,
       "notes": "",
       "yt": "https://www.youtube.com/watch?v=U7nn_HVknKA&list=RDU7nn_HVknKA&start_radio=1&pp=ygUPRGlnaXRhbCBEZXNjZW50oAcB",
       "banner": ""
@@ -517,7 +532,7 @@ const APP_DATA = {
       "order": 20,
       "level": "xo",
       "publisher": "KrmaL",
-      "top": 414,
+      "top": 415,
       "notes": "",
       "yt": "https://www.youtube.com/watch?v=9-63G-Kc7xc&list=RD9-63G-Kc7xc&start_radio=1&pp=ygUFWG8gZ2SgBwE%3D",
       "banner": ""
@@ -526,7 +541,7 @@ const APP_DATA = {
       "order": 21,
       "level": "Conical Depression",
       "publisher": "KrmaL",
-      "top": 912,
+      "top": 913,
       "notes": "",
       "yt": "https://www.youtube.com/watch?v=yub12mIMcH4&pp=ygUVY29uaWNhbCBkZXByZXNzaW9uIGdk",
       "banner": ""
@@ -535,7 +550,7 @@ const APP_DATA = {
       "order": 23,
       "level": "Sweater Weather",
       "publisher": "VelYT",
-      "top": 1607,
+      "top": 1611,
       "notes": "",
       "yt": "https://www.youtube.com/watch?v=6YzbM1egN1w&list=RD6YzbM1egN1w&start_radio=1&pp=ygUTU3dlYXRoZXIgd2VhdGhlciBnZKAHAQ%3D%3D",
       "banner": ""
@@ -544,7 +559,7 @@ const APP_DATA = {
       "order": 47,
       "level": "New Record",
       "publisher": "lTemp",
-      "top": 718,
+      "top": 719,
       "notes": "",
       "yt": "https://www.youtube.com/watch?v=GamAMATmTo8&list=RDGamAMATmTo8&start_radio=1&pp=ygUNbmV3IHJlY29yZCBnZKAHAQ%3D%3D",
       "banner": ""
@@ -553,7 +568,7 @@ const APP_DATA = {
       "order": 24,
       "level": "Wasureta",
       "publisher": "HelpegasuS",
-      "top": 370,
+      "top": 371,
       "notes": "",
       "yt": "https://www.youtube.com/watch?v=MuHJgxOGqmE&list=RDMuHJgxOGqmE&start_radio=1&pp=ygUIV2FzdXJldGGgBwE%3D",
       "banner": ""
@@ -562,7 +577,7 @@ const APP_DATA = {
       "order": 25,
       "level": "LUMINA",
       "publisher": "Hechie",
-      "top": 393,
+      "top": 394,
       "notes": "",
       "yt": "https://www.youtube.com/watch?v=0ip9O83I6qg&list=RD0ip9O83I6qg&start_radio=1&pp=ygUJTHVtaW5hIGdkoAcB",
       "banner": ""
@@ -589,7 +604,7 @@ const APP_DATA = {
       "order": 28,
       "level": "Saul Goodman",
       "publisher": "Renn241",
-      "top": 69,
+      "top": 70,
       "notes": "",
       "yt": "https://www.youtube.com/watch?v=BVXMXxYAX08&list=RDBVXMXxYAX08&start_radio=1&pp=ygUPc2F1bCBnb29kbWFuIGdkoAcB",
       "banner": ""
@@ -598,7 +613,7 @@ const APP_DATA = {
       "order": 29,
       "level": "BRITNEY NO SCLEARS",
       "publisher": "wabas",
-      "top": 70,
+      "top": 71,
       "notes": "",
       "yt": "https://www.youtube.com/watch?v=Ul24DkMIAvM&list=RDUl24DkMIAvM&start_radio=1&pp=ygUTYnJpdG5leSBubyBzY2xlYXJ6c6AHAdIHCQkrDAGHKiGM7w%3D%3D",
       "banner": ""
@@ -607,7 +622,7 @@ const APP_DATA = {
       "order": 30,
       "level": "Coalescence",
       "publisher": "amplitron",
-      "top": 99,
+      "top": 100,
       "notes": "",
       "yt": "https://www.youtube.com/watch?v=Y0_IB6rsZkY&list=RDY0_IB6rsZkY&start_radio=1&pp=ygUOY29hbGVzY2VuY2UgZ2SgBwE%3D",
       "banner": ""
@@ -616,7 +631,7 @@ const APP_DATA = {
       "order": 31,
       "level": "NEUTRA",
       "publisher": "Jenkins",
-      "top": 160,
+      "top": 161,
       "notes": "",
       "yt": "https://www.youtube.com/watch?v=I9SrcUBnvjs&list=RDI9SrcUBnvjs&start_radio=1&pp=ygUGTkVVVFJBoAcB",
       "banner": ""
@@ -625,7 +640,7 @@ const APP_DATA = {
       "order": 32,
       "level": "Ta1LSD0ll",
       "publisher": "Ta1LSD0ll",
-      "top": 215,
+      "top": 216,
       "notes": "",
       "yt": "https://www.youtube.com/watch?v=jAel_obc7wU&pp=ygUMdGFpbHNkb2xsIGdk",
       "banner": ""
@@ -634,7 +649,7 @@ const APP_DATA = {
       "order": 33,
       "level": "Bloodlust",
       "publisher": "Knobbelboy",
-      "top": 261,
+      "top": 262,
       "notes": "",
       "yt": "https://www.youtube.com/watch?v=CK2xctLZxD0&list=RDCK2xctLZxD0&start_radio=1&pp=ygUMQmxvb2RsdXN0IGdkoAcB",
       "banner": ""
@@ -643,7 +658,7 @@ const APP_DATA = {
       "order": 34,
       "level": "Cobwebs",
       "publisher": "NineDice",
-      "top": 222,
+      "top": 223,
       "notes": "",
       "yt": "https://www.youtube.com/watch?v=cV1iYMF6dGg&pp=ygUKY29id2VicyBnZA%3D%3D",
       "banner": ""
@@ -652,7 +667,7 @@ const APP_DATA = {
       "order": 35,
       "level": "Nhelv",
       "publisher": "guillester",
-      "top": 273,
+      "top": 274,
       "notes": "",
       "yt": "https://www.youtube.com/watch?v=zQLhD3G9VUo&list=RDzQLhD3G9VUo&start_radio=1&pp=ygUFbmhlbHagBwE%3D",
       "banner": ""
@@ -661,7 +676,7 @@ const APP_DATA = {
       "order": 36,
       "level": "Cybernetic Crescent",
       "publisher": "ViPriN",
-      "top": 374,
+      "top": 375,
       "notes": "",
       "yt": "https://www.youtube.com/watch?v=vhHPJAUPBSc&pp=ygUWY3liZXJuZXRpYyBjcmVzY2VudCBnZA%3D%3D",
       "banner": ""
@@ -670,7 +685,7 @@ const APP_DATA = {
       "order": 37,
       "level": "Super Probably Level",
       "publisher": "Alkali",
-      "top": 418,
+      "top": 419,
       "notes": "",
       "yt": "https://www.youtube.com/watch?v=8R8dLxuZhnA&pp=ygUXc3VwZXIgcHJvYmFibHkgbGV2ZWwgZ2Q%3D",
       "banner": ""
@@ -679,7 +694,7 @@ const APP_DATA = {
       "order": 38,
       "level": "Artificial Ascent",
       "publisher": "ViPriN",
-      "top": 536,
+      "top": 537,
       "notes": "",
       "yt": "https://www.youtube.com/watch?v=URwPErFdH7c&list=RDURwPErFdH7c&start_radio=1&pp=ygUUYXJ0aWZpY2lhbCBhc2NlbnQgZ2SgBwE%3D",
       "banner": ""
@@ -688,7 +703,7 @@ const APP_DATA = {
       "order": 39,
       "level": "GREFG",
       "publisher": "ReymundoTK",
-      "top": 516,
+      "top": 517,
       "notes": "",
       "yt": "https://www.youtube.com/watch?v=PfvfiIpybhY&list=RDPfvfiIpybhY&start_radio=1&pp=ygUIZ3JlZmcgZ2SgBwE%3D",
       "banner": ""
@@ -697,7 +712,7 @@ const APP_DATA = {
       "order": 40,
       "level": "Low Death",
       "publisher": "KrmaL",
-      "top": 544,
+      "top": 545,
       "notes": "",
       "yt": "https://www.youtube.com/watch?v=5CJqzJST_oU&list=RD5CJqzJST_oU&start_radio=1&pp=ygUSbG93IGRlYXRoIGdkIGtybWFsoAcB",
       "banner": ""
@@ -706,7 +721,7 @@ const APP_DATA = {
       "order": 41,
       "level": "Bete Noire",
       "publisher": "ThePurgatory",
-      "top": 550,
+      "top": 551,
       "notes": "",
       "yt": "https://www.youtube.com/watch?v=rKzGiV0xg_U&list=RDrKzGiV0xg_U&start_radio=1&pp=ygUMYmV0ZSBub2lyIGdkoAcB",
       "banner": ""
@@ -715,7 +730,7 @@ const APP_DATA = {
       "order": 42,
       "level": "Belloq",
       "publisher": "Sminx",
-      "top": 551,
+      "top": 552,
       "notes": "",
       "yt": "https://www.youtube.com/watch?v=Vt86fz7xaMk&list=RDVt86fz7xaMk&start_radio=1&pp=ygUGYmVsbG9xoAcB",
       "banner": ""
@@ -724,7 +739,7 @@ const APP_DATA = {
       "order": 43,
       "level": "Astral Divinity",
       "publisher": "Knobbelboy",
-      "top": 591,
+      "top": 592,
       "notes": "",
       "yt": "https://www.youtube.com/watch?v=Wt76QZqF-os&list=RDWt76QZqF-os&start_radio=1&pp=ygUSYXN0cmFsIGRpdmluaXR5IGdkoAcB",
       "banner": ""
@@ -733,7 +748,7 @@ const APP_DATA = {
       "order": 44,
       "level": "Butiti III",
       "publisher": "JonathanGD",
-      "top": 604,
+      "top": 605,
       "notes": "",
       "yt": "https://www.youtube.com/watch?v=MHnbcwHNU8g&list=RDMHnbcwHNU8g&start_radio=1&pp=ygUKYnV0aXRpIElJSaAHAQ%3D%3D",
       "banner": ""
@@ -742,7 +757,7 @@ const APP_DATA = {
       "order": 45,
       "level": "Hatred",
       "publisher": "AZuLer4",
-      "top": 635,
+      "top": 636,
       "notes": "",
       "yt": "https://www.youtube.com/watch?v=DnQ-CG2hrZE&list=RDDnQ-CG2hrZE&start_radio=1&pp=ygUJaGF0cmVkIGdkoAcB",
       "banner": ""
@@ -751,7 +766,7 @@ const APP_DATA = {
       "order": 46,
       "level": "Shock Therapy",
       "publisher": "Arb",
-      "top": 651,
+      "top": 652,
       "notes": "",
       "yt": "https://www.youtube.com/watch?v=RhkKFBlVhqs&list=RDRhkKFBlVhqs&start_radio=1&pp=ygUQc2hvY2sgdGhlcmFweSBnZKAHAQ%3D%3D",
       "banner": ""
@@ -760,7 +775,7 @@ const APP_DATA = {
       "order": 47,
       "level": "Subsonic",
       "publisher": "ViPriN",
-      "top": 665,
+      "top": 666,
       "notes": "",
       "yt": "https://www.youtube.com/watch?v=8h_Zx25MQP0&list=RD8h_Zx25MQP0&start_radio=1&pp=ygUIc3Vic29uaWOgBwE%3D",
       "banner": ""
@@ -769,7 +784,7 @@ const APP_DATA = {
       "order": 48,
       "level": "angel",
       "publisher": "insxne",
-      "top": 891,
+      "top": 892,
       "notes": "",
       "yt": "https://www.youtube.com/watch?v=PMMJSRZguik&list=RDPMMJSRZguik&start_radio=1&pp=ygUIYW5nZWwgZ2SgBwE%3D",
       "banner": ""
@@ -778,7 +793,7 @@ const APP_DATA = {
       "order": 49,
       "level": "Brain Power",
       "publisher": "Zafkiel7",
-      "top": 1116,
+      "top": 1118,
       "notes": "",
       "yt": "https://www.youtube.com/watch?v=KY4yT1fviOA&list=RDKY4yT1fviOA&start_radio=1&pp=ygUNYnJhaW5wb3dlciBnZKAHAQ%3D%3D",
       "banner": ""
@@ -786,22 +801,22 @@ const APP_DATA = {
   ],
   "progress": [
     {
-      "level": "New Record",
-      "publisher": "lTemp",
-      "top": 718,
-      "attempts": "4000",
-      "bestFromZero": "95",
-      "bestRun": "42-100%",
-      "runsCount": "2",
-      "updatedAt": 1794074923927,
+      "level": "Xronier",
+      "publisher": "zJinoBeats",
+      "top": 556,
+      "attempts": "342",
+      "bestFromZero": "0",
+      "bestRun": "76-100",
+      "runsCount": "",
+      "updatedAt": 1794505736251,
       "notes": "",
-      "yt": "https://www.youtube.com/watch?v=Ch3Zr4jee9Y&list=RDCh3Zr4jee9Y&start_radio=1&pp=ygUKbmV3IHJlY29yZKAHAQ%3D%3D",
+      "yt": "https://www.youtube.com/watch?v=MV_6CoBr74c&pp=ygUKeHJvbmllciBnZA%3D%3D",
       "banner": ""
     },
     {
       "level": "Nervhell",
       "publisher": "ASVTeam",
-      "top": 60,
+      "top": 61,
       "attempts": "1842",
       "bestFromZero": "2",
       "bestRun": "64-100",
@@ -814,7 +829,7 @@ const APP_DATA = {
     {
       "level": "BRITNEY NO SCLEARS",
       "publisher": "wabas",
-      "top": 70,
+      "top": 71,
       "attempts": "4597",
       "bestFromZero": "2",
       "bestRun": "75-100",
@@ -827,7 +842,7 @@ const APP_DATA = {
     {
       "level": "Coalescence",
       "publisher": "amplitron",
-      "top": 99,
+      "top": 100,
       "attempts": "2928",
       "bestFromZero": "0",
       "bestRun": "63-100",
@@ -840,7 +855,7 @@ const APP_DATA = {
     {
       "level": "LIMBO",
       "publisher": "Mindcap",
-      "top": 80,
+      "top": 81,
       "attempts": "35227",
       "bestFromZero": "63",
       "bestRun": "43-100",
@@ -853,7 +868,7 @@ const APP_DATA = {
     {
       "level": "Blade of Justice",
       "publisher": "Manix648",
-      "top": 766,
+      "top": 767,
       "attempts": "1607",
       "bestFromZero": "37",
       "bestRun": "45-100",
@@ -879,7 +894,7 @@ const APP_DATA = {
     {
       "level": "GREFG",
       "publisher": "ReymundoTK",
-      "top": 516,
+      "top": 517,
       "attempts": "3500",
       "bestFromZero": "31",
       "bestRun": "54-100",
@@ -905,7 +920,7 @@ const APP_DATA = {
     {
       "level": "Shutdown",
       "publisher": "OliSW",
-      "top": 336,
+      "top": 337,
       "attempts": "11238",
       "bestFromZero": "",
       "bestRun": "46-100",
@@ -918,7 +933,7 @@ const APP_DATA = {
     {
       "level": "Sweater Weather",
       "publisher": "VelYT",
-      "top": 1607,
+      "top": 1611,
       "attempts": "642",
       "bestFromZero": "71",
       "bestRun": "37-100",
@@ -931,7 +946,7 @@ const APP_DATA = {
     {
       "level": "Cat Planet",
       "publisher": "icedcave",
-      "top": 1033,
+      "top": 1034,
       "attempts": "1934",
       "bestFromZero": "90",
       "bestRun": "36-100",
@@ -944,7 +959,7 @@ const APP_DATA = {
     {
       "level": "Congregation",
       "publisher": "Presta",
-      "top": 280,
+      "top": 281,
       "attempts": "42-100",
       "bestFromZero": "0",
       "bestRun": "3200",
@@ -957,7 +972,7 @@ const APP_DATA = {
     {
       "level": "Brain Power",
       "publisher": "Zafkiel7",
-      "top": 1116,
+      "top": 1118,
       "attempts": "1232",
       "bestFromZero": "67",
       "bestRun": "28-100",
@@ -970,7 +985,7 @@ const APP_DATA = {
     {
       "level": "Wasureta",
       "publisher": "HelpegasuS",
-      "top": 370,
+      "top": 371,
       "attempts": "15381",
       "bestFromZero": "81",
       "bestRun": "37-100",
@@ -983,7 +998,7 @@ const APP_DATA = {
     {
       "level": "Digital Descent",
       "publisher": "ViPriN",
-      "top": 502,
+      "top": 503,
       "attempts": "2142",
       "bestFromZero": "23",
       "bestRun": "69-100",
@@ -996,7 +1011,7 @@ const APP_DATA = {
     {
       "level": "Bausha Vortex",
       "publisher": "Pennutoh",
-      "top": 607,
+      "top": 608,
       "attempts": "7324",
       "bestFromZero": "81",
       "bestRun": "18-100",
@@ -1009,7 +1024,7 @@ const APP_DATA = {
     {
       "level": "Cobwebs",
       "publisher": "NineDice",
-      "top": 222,
+      "top": 223,
       "attempts": "6432",
       "bestFromZero": "45",
       "bestRun": "72-100",
@@ -1022,7 +1037,7 @@ const APP_DATA = {
     {
       "level": "The Lost Existence",
       "publisher": "JonathanGD",
-      "top": 1495,
+      "top": 1499,
       "attempts": "2142",
       "bestFromZero": "40",
       "bestRun": "53-100",
@@ -1035,7 +1050,7 @@ const APP_DATA = {
     {
       "level": "Bloodbath",
       "publisher": "Riot",
-      "top": 860,
+      "top": 861,
       "attempts": "1700",
       "bestFromZero": "99%",
       "bestRun": "ntr",
@@ -1048,7 +1063,7 @@ const APP_DATA = {
     {
       "level": "Conical Depression",
       "publisher": "KrmaL",
-      "top": 912,
+      "top": 913,
       "attempts": "732",
       "bestFromZero": "3",
       "bestRun": "52-100",
@@ -1061,7 +1076,7 @@ const APP_DATA = {
     {
       "level": "xo",
       "publisher": "KrmaL",
-      "top": 414,
+      "top": 415,
       "attempts": "485",
       "bestFromZero": "11",
       "bestRun": "61-100",
